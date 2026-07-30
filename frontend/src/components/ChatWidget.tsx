@@ -170,7 +170,7 @@ export default function ChatWidget() {
           >
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center shrink-0">
-                <BotIcon className="w-5 h-5 text-gold" />
+                <BotIcon className="w-5 h-5 text-magenta" />
               </div>
               <div>
                 <div className="text-white text-sm font-semibold leading-tight">Amplify Assistant</div>
@@ -195,8 +195,8 @@ export default function ChatWidget() {
             <div style={{ padding: '16px' }}>
               {messages.length === 0 && (
                 <div className="text-center py-6">
-                  <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <BotIcon className="w-6 h-6 text-gold" />
+                  <div className="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <BotIcon className="w-6 h-6 text-accent" />
                   </div>
                   <p className="text-sm text-gray-600 font-medium mb-1">Hey, excited about Amplify?</p>
                   <p className="text-xs text-gray-400 leading-relaxed">
@@ -232,7 +232,7 @@ export default function ChatWidget() {
                             href="https://www.workwave.com"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="mt-2 w-full flex items-center justify-center gap-2 bg-gold hover:bg-gold-dark text-navy font-semibold transition-colors"
+                            className="mt-2 w-full flex items-center justify-center gap-2 bg-magenta hover:bg-magenta-dark text-white font-semibold transition-colors"
                             style={{
                               padding: '10px 16px',
                               borderRadius: '10px',

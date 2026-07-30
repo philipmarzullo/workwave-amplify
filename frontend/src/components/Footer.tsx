@@ -18,8 +18,8 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="md:col-span-1">
-              <div className="flex items-center gap-2 font-bold text-lg mb-3">
-                <Zap className="w-6 h-6 text-gold" />
+              <div className="flex items-center gap-2 font-display font-bold text-lg mb-3">
+                <Zap className="w-6 h-6 text-magenta" />
                 WorkWave Amplify
               </div>
               <p className="text-sm text-gray-400 leading-relaxed">
@@ -53,7 +53,7 @@ export default function Footer() {
                 href="https://www.workwave.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-gold hover:bg-gold-dark text-navy text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors"
+                className="inline-block bg-magenta hover:bg-magenta-dark text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors"
               >
                 Register Now
               </a>

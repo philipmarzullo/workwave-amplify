@@ -55,7 +55,7 @@ export default function SessionsPage() {
     <div className="min-h-screen bg-gray-50 pt-24 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
-          <h1 className="text-3xl sm:text-4xl font-bold text-navy mb-2">All Sessions</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold text-navy mb-2 font-display">All Sessions</h1>
           <p className="text-gray-500">
             Browse {sessions.length} sessions across 4 tracks and 4 days. Save your favorites.
           </p>

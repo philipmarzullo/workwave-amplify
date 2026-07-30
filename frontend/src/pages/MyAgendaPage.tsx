@@ -27,7 +27,7 @@ export default function MyAgendaPage() {
         {!persona ? (
           <>
             <div className="text-center mb-10">
-              <h1 className="text-3xl sm:text-4xl font-bold text-navy mb-2">Build Your Agenda</h1>
+              <h1 className="text-3xl sm:text-4xl font-bold text-navy mb-2 font-display">Build Your Agenda</h1>
               <p className="text-gray-500 max-w-xl mx-auto">
                 Tell us about yourself and we'll recommend the sessions that matter most to you.
               </p>

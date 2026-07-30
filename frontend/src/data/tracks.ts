@@ -4,7 +4,7 @@ export const tracks: TrackConfig[] = [
   {
     id: 'joint',
     label: 'Joint',
-    color: '#8b5cf6',
+    color: '#8B3DFF',
     bgClass: 'bg-track-joint',
     textClass: 'text-track-joint',
     borderClass: 'border-track-joint',
@@ -12,7 +12,7 @@ export const tracks: TrackConfig[] = [
   {
     id: 'pestpac',
     label: 'PestPac',
-    color: '#ef4444',
+    color: '#E8005E',
     bgClass: 'bg-track-pestpac',
     textClass: 'text-track-pestpac',
     borderClass: 'border-track-pestpac',
@@ -28,7 +28,7 @@ export const tracks: TrackConfig[] = [
   {
     id: 'winteam',
     label: 'WinTeam',
-    color: '#3b82f6',
+    color: '#264BEE',
     bgClass: 'bg-track-winteam',
     textClass: 'text-track-winteam',
     borderClass: 'border-track-winteam',

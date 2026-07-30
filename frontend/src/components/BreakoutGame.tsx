@@ -5,7 +5,7 @@ interface Props {
   onClose: () => void
 }
 
-const TRACK_COLORS = ['#8b5cf6', '#ef4444', '#22c55e', '#3b82f6', '#f59e0b']
+const TRACK_COLORS = ['#8B3DFF', '#E8005E', '#22c55e', '#264BEE', '#FFFFFF']
 const COLS = 10
 const ROWS = 5
 const BRICK_GAP = 4
@@ -206,7 +206,7 @@ export default function BreakoutGame({ onClose }: Props) {
       }
 
       // Draw
-      ctx.fillStyle = '#0f1b2d'
+      ctx.fillStyle = '#0A1128'
       ctx.fillRect(0, 0, w, h)
 
       // Bricks
@@ -244,7 +244,7 @@ export default function BreakoutGame({ onClose }: Props) {
       ctx.fill()
 
       // Ball
-      ctx.fillStyle = '#f59e0b'
+      ctx.fillStyle = '#E8005E'
       ctx.beginPath()
       ctx.arc(s.ballX, s.ballY, BALL_R, 0, Math.PI * 2)
       ctx.fill()
@@ -290,7 +290,7 @@ export default function BreakoutGame({ onClose }: Props) {
             <p className="text-gray-300 mb-4">Score: {score}</p>
             <button
               onClick={onClose}
-              className="bg-gold hover:bg-gold-dark text-navy font-semibold px-6 py-3 rounded-lg transition-colors"
+              className="bg-magenta hover:bg-magenta-dark text-white font-semibold px-6 py-3 rounded-lg transition-colors"
             >
               Back to Conference
             </button>

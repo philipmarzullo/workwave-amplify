@@ -5,27 +5,31 @@ export default {
     extend: {
       colors: {
         navy: {
-          DEFAULT: '#0f1b2d',
-          light: '#1a2942',
-          dark: '#0a1220',
+          DEFAULT: '#0A1128',
+          light: '#131D3A',
+          dark: '#060C1A',
         },
         accent: {
-          DEFAULT: '#3b82f6',
-          dark: '#2563eb',
+          DEFAULT: '#8B3DFF',
+          dark: '#7030E0',
         },
-        gold: {
-          DEFAULT: '#f59e0b',
-          dark: '#d97706',
+        magenta: {
+          DEFAULT: '#E8005E',
+          dark: '#C5004F',
+        },
+        blue: {
+          brand: '#264BEE',
         },
         track: {
-          joint: '#8b5cf6',
-          pestpac: '#ef4444',
+          joint: '#8B3DFF',
+          pestpac: '#E8005E',
           realgreen: '#22c55e',
-          winteam: '#3b82f6',
+          winteam: '#264BEE',
         },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['Termina', 'Inter', 'system-ui', 'sans-serif'],
       },
     },
   },

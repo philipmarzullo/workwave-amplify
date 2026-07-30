@@ -38,10 +38,14 @@ workwave-amplify/
 
 ## Branding
 
-- Deep navy: `#0f1b2d`
-- Electric blue: `#3b82f6`
-- Gold: `#f59e0b`
-- Track colors: Green (RealGreen), Red (PestPac), Blue (WinTeam), Purple (Joint)
+- Navy: `#0A1128`
+- Purple (primary accent): `#8B3DFF`
+- Blue: `#264BEE`
+- Magenta (CTA/highlight): `#E8005E`
+- White: `#FFFFFF`
+- Headline font: Termina Bold (font-display)
+- Body font: Inter Regular (font-sans)
+- Track colors: Purple `#8B3DFF` (Joint), Magenta `#E8005E` (PestPac), Green `#22c55e` (RealGreen), Blue `#264BEE` (WinTeam)
 
 ## Backend
 

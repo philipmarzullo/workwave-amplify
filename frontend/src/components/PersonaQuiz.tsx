@@ -139,7 +139,7 @@ export default function PersonaQuiz({ onComplete }: Props) {
             <button
               onClick={handleComplete}
               disabled={selectedInterests.length === 0}
-              className="flex items-center gap-2 bg-gold hover:bg-gold-dark disabled:bg-gray-200 text-navy disabled:text-gray-400 font-semibold px-6 py-3 rounded-lg transition-colors"
+              className="flex items-center gap-2 bg-magenta hover:bg-magenta-dark disabled:bg-gray-200 text-white disabled:text-gray-400 font-semibold px-6 py-3 rounded-lg transition-colors"
             >
               <Sparkles className="w-4 h-4" /> Build My Agenda
             </button>

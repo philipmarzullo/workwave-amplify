@@ -31,7 +31,7 @@ export default function SessionCard({ session, saved, onToggleSave }: Props) {
             {typeLabels[session.type]}
           </span>
           {session.customerLed && (
-            <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-gold/10 text-gold-dark">
+            <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-magenta/10 text-magenta">
               Customer-Led
             </span>
           )}

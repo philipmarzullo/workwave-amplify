@@ -131,7 +131,7 @@ export default function AgendaResults({ persona, onReset }: Props) {
           href="https://www.workwave.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block bg-gold hover:bg-gold-dark text-navy font-semibold px-6 py-3 rounded-lg transition-colors"
+          className="inline-block bg-magenta hover:bg-magenta-dark text-white font-semibold px-6 py-3 rounded-lg transition-colors"
         >
           Register Now
         </a>

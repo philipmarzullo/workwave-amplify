@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Termina Bold — replace src with actual font file when available */
+@font-face {
+  font-family: 'Termina';
+  src: url('/fonts/Termina-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 html {
   scroll-behavior: smooth;
 }
