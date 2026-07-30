@@ -47,7 +47,7 @@ export default function Navbar() {
               My Agenda
             </Link>
             <a
-              href="https://www.workwave.com"
+              href="https://workwaveconference.cventevents.com/9AWddk"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-magenta hover:bg-magenta-dark text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors"
@@ -75,7 +75,7 @@ export default function Navbar() {
               My Agenda
             </Link>
             <a
-              href="https://www.workwave.com"
+              href="https://workwaveconference.cventevents.com/9AWddk"
               target="_blank"
               rel="noopener noreferrer"
               className="block bg-magenta hover:bg-magenta-dark text-white text-sm font-semibold px-5 py-2.5 rounded-lg text-center transition-colors"

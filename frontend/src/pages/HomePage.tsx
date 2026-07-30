@@ -5,7 +5,7 @@ import SessionCard from '../components/SessionCard'
 import { sessions } from '../data/sessions'
 import { useState, useEffect } from 'react'
 
-const REGISTER_URL = 'https://www.workwave.com'
+const REGISTER_URL = 'https://workwaveconference.cventevents.com/9AWddk'
 
 const stats = [
   { value: '130+', label: 'Sessions' },
@@ -15,17 +15,30 @@ const stats = [
 ]
 
 const valueProps = [
-  { icon: Users, title: 'Peer Learning', description: 'Connect with 800+ operators who face the same challenges you do.' },
-  { icon: BarChart3, title: 'Product Roadmaps', description: 'See what is coming next before anyone else. Directly from the product teams.' },
-  { icon: MapPin, title: 'Networking in NOLA', description: 'Structured networking events, expo hall, and the best city for after-hours.' },
+  { icon: Users, title: 'Peer Learning', description: 'Connect with 800+ operators who face the same challenges you do. Learn from real businesses solving real problems.' },
+  { icon: BarChart3, title: 'Product Roadmaps', description: 'See what is coming next for PestPac, RealGreen, and TEAM Software. Directly from the product teams.' },
+  { icon: MapPin, title: 'Networking in NOLA', description: 'Structured networking, expo hall, and nightly events on the banks of the Mississippi. During Mardi Gras season.' },
 ]
 
 const hotTopics = [
-  { icon: BarChart3, title: 'WaveLytics', description: 'The new analytics platform powered by Snowflake and Sigma.' },
-  { icon: Brain, title: 'AI in Field Service', description: 'Practical applications delivering real results, not hype.' },
-  { icon: Plug, title: 'Integrations', description: 'Connected ecosystems and frictionless data flow.' },
-  { icon: Shield, title: 'Data Security', description: 'Protecting customer and operational data.' },
-  { icon: Palette, title: 'UI Modernization', description: 'Fresh interfaces coming across all products.' },
+  { icon: BarChart3, title: 'WaveLytics', description: 'The new business analytics platform powered by Snowflake and Sigma. Big focus this year.' },
+  { icon: Brain, title: 'AI in Field Service', description: 'Practical AI applications delivering real results for field service operations.' },
+  { icon: Plug, title: 'Integrations', description: 'Frictionless data flow and connected ecosystems across your tech stack.' },
+  { icon: Shield, title: 'Data Security', description: 'Protecting customer and operational data in an evolving threat landscape.' },
+  { icon: Palette, title: 'Growth Strategies', description: 'Peer operators sharing tactics for scaling through labor shortages and rising costs.' },
+]
+
+const pricingTiers = [
+  { label: 'Early Bird', price: '$849', dates: 'Jul 15 - Aug 31, 2026', highlight: true },
+  { label: 'General', price: '$949', dates: 'Sep 1, 2026 - Jan 10, 2027', highlight: false },
+  { label: 'Last Chance', price: '$1,195', dates: 'Jan 11 - Feb 1, 2027', highlight: false },
+]
+
+const testimonials = [
+  { name: 'Mark Kelbacher', company: 'MissionGreen Services', quote: 'The educational value and peer connections help solve immediate business challenges.' },
+  { name: 'Matteo Stradiotto', company: 'Insight Pest', quote: 'Discovered workflow efficiency opportunities through platform deep-dives.' },
+  { name: 'Dave Koone', company: 'Lawn Doctor', quote: 'The relationship-building and support culture goes beyond just software.' },
+  { name: 'Brad Leahy', company: 'Blades of Green', quote: 'Built lasting professional relationships that continue to drive business growth.' },
 ]
 
 const partners = ['AWS', 'Snowflake', 'Sigma', 'Arrow']
@@ -73,14 +86,15 @@ export default function HomePage() {
               <Calendar className="w-5 h-5" />
               <span>January 31 - February 3, 2027</span>
             </div>
-            <div className="flex items-center justify-center gap-3 text-gray-300 text-lg sm:text-xl mb-8">
+            <div className="flex items-center justify-center gap-3 text-gray-300 text-lg sm:text-xl mb-3">
               <MapPin className="w-5 h-5" />
-              <span>New Orleans</span>
+              <span>Hilton New Orleans Riverside</span>
             </div>
+            <p className="text-gray-400 italic text-sm mb-8">Your industry. Your success. Your conference, in the spirit of New Orleans.</p>
           </ScrollFadeIn>
           <ScrollFadeIn delay={200}>
             <p className="text-gray-400 text-lg sm:text-xl max-w-2xl mx-auto mb-10">
-              Four days of learning, networking, and product innovation for the field service community.
+              Four days of learning, networking, and product innovation for pest control, lawn care, landscaping, commercial cleaning, and security professionals.
             </p>
           </ScrollFadeIn>
           <ScrollFadeIn delay={300}>
@@ -169,8 +183,45 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Featured Sessions */}
+      {/* Pricing */}
       <section className="bg-gray-50 py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollFadeIn>
+            <h2 className="text-3xl sm:text-4xl font-bold text-navy text-center mb-4 font-display">Registration</h2>
+            <p className="text-gray-500 text-center max-w-2xl mx-auto mb-12">
+              All tickets include meals, keynotes, breakout sessions, and nightly events. Group discount: $50 off per ticket (min 5), combinable with Early Bird.
+            </p>
+          </ScrollFadeIn>
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {pricingTiers.map((tier, i) => (
+              <ScrollFadeIn key={tier.label} delay={i * 100}>
+                <div className={`rounded-xl p-6 text-center border-2 ${tier.highlight ? 'border-magenta bg-white shadow-lg' : 'border-gray-200 bg-white'}`}>
+                  {tier.highlight && <span className="text-xs font-bold text-magenta uppercase tracking-wider">Best Value</span>}
+                  <div className="text-3xl font-extrabold text-navy font-display mt-1 mb-1">{tier.price}</div>
+                  <div className="font-semibold text-navy mb-2">{tier.label}</div>
+                  <div className="text-sm text-gray-400">{tier.dates}</div>
+                </div>
+              </ScrollFadeIn>
+            ))}
+          </div>
+          <ScrollFadeIn delay={300}>
+            <div className="text-center mt-8">
+              <a
+                href={REGISTER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-magenta hover:bg-magenta-dark text-white font-bold px-8 py-4 rounded-lg text-lg transition-colors inline-flex items-center gap-2"
+              >
+                Register Now <ArrowRight className="w-5 h-5" />
+              </a>
+              <p className="text-xs text-gray-400 mt-3">Registration closes January 29, 2027. Plus One guest passes available for $450.</p>
+            </div>
+          </ScrollFadeIn>
+        </div>
+      </section>
+
+      {/* Featured Sessions */}
+      <section className="bg-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollFadeIn>
             <div className="flex items-center justify-between mb-8">
@@ -194,8 +245,65 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Testimonials */}
+      <section className="bg-gray-50 py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollFadeIn>
+            <h2 className="text-3xl sm:text-4xl font-bold text-navy text-center mb-12 font-display">What Attendees Say</h2>
+          </ScrollFadeIn>
+          <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {testimonials.map((t, i) => (
+              <ScrollFadeIn key={t.name} delay={i * 100}>
+                <div className="bg-white rounded-xl p-6 border border-gray-200">
+                  <p className="text-gray-600 italic mb-4">"{t.quote}"</p>
+                  <div>
+                    <div className="font-semibold text-navy text-sm">{t.name}</div>
+                    <div className="text-xs text-gray-400">{t.company}</div>
+                  </div>
+                </div>
+              </ScrollFadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Venue */}
+      <section className="bg-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollFadeIn>
+            <h2 className="text-3xl sm:text-4xl font-bold text-navy text-center mb-4 font-display">The Venue</h2>
+            <p className="text-gray-500 text-center max-w-2xl mx-auto mb-10">
+              Hilton New Orleans Riverside, 2 Poydras Street, on the banks of the Mississippi River. 16 miles from MSY airport.
+            </p>
+          </ScrollFadeIn>
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <ScrollFadeIn delay={0}>
+              <div className="bg-gray-50 rounded-xl p-6 text-center">
+                <div className="text-2xl mb-2">🎭</div>
+                <h3 className="font-semibold text-navy mb-1">Mardi Gras Season</h3>
+                <p className="text-sm text-gray-500">The conference falls during Mardi Gras. Book flights early for the best rates.</p>
+              </div>
+            </ScrollFadeIn>
+            <ScrollFadeIn delay={100}>
+              <div className="bg-gray-50 rounded-xl p-6 text-center">
+                <div className="text-2xl mb-2">🏨</div>
+                <h3 className="font-semibold text-navy mb-1">Hotel Block</h3>
+                <p className="text-sm text-gray-500">Group rate available until January 6, 2027. After that, rates go up and rooms may sell out.</p>
+              </div>
+            </ScrollFadeIn>
+            <ScrollFadeIn delay={200}>
+              <div className="bg-gray-50 rounded-xl p-6 text-center">
+                <div className="text-2xl mb-2">🌡️</div>
+                <h3 className="font-semibold text-navy mb-1">Weather</h3>
+                <p className="text-sm text-gray-500">February in New Orleans: highs in the mid-60s, lows in the 40s. Bring layers and an umbrella.</p>
+              </div>
+            </ScrollFadeIn>
+          </div>
+        </div>
+      </section>
+
       {/* Partners */}
-      <section className="bg-white py-16">
+      <section className="bg-gray-50 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollFadeIn>
             <p className="text-center text-gray-400 text-sm font-medium mb-8 uppercase tracking-wider">Technology Partners</p>
@@ -219,7 +327,7 @@ export default function HomePage() {
               Ready to Amplify?
             </h2>
             <p className="text-gray-300 text-lg mb-8 max-w-xl mx-auto">
-              Join 800+ field service professionals in New Orleans. Register today and start building your personalized agenda.
+              Join 800+ field service professionals at the Hilton New Orleans Riverside. Register today and start building your personalized agenda.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a

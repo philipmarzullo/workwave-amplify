@@ -229,7 +229,7 @@ export default function ChatWidget() {
                         {textContent}
                         {hasRegister && (
                           <a
-                            href="https://www.workwave.com"
+                            href="https://workwaveconference.cventevents.com/9AWddk"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="mt-2 w-full flex items-center justify-center gap-2 bg-magenta hover:bg-magenta-dark text-white font-semibold transition-colors"

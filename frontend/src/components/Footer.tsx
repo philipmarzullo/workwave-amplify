@@ -24,7 +24,8 @@ export default function Footer() {
               </div>
               <p className="text-sm text-gray-400 leading-relaxed">
                 Jan 31 - Feb 3, 2027<br />
-                New Orleans
+                Hilton New Orleans Riverside<br />
+                New Orleans, LA
               </p>
             </div>
 
@@ -44,13 +45,18 @@ export default function Footer() {
                     WorkWave.com
                   </a>
                 </li>
+                <li>
+                  <a href="mailto:events@workwave.com" className="hover:text-white transition-colors">
+                    events@workwave.com
+                  </a>
+                </li>
               </ul>
             </div>
 
             <div>
               <h4 className="font-semibold text-sm mb-3">Get Started</h4>
               <a
-                href="https://www.workwave.com"
+                href="https://workwaveconference.cventevents.com/9AWddk"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block bg-magenta hover:bg-magenta-dark text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors"

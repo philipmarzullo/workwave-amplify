@@ -128,7 +128,7 @@ export default function AgendaResults({ persona, onReset }: Props) {
           Register for WorkWave Amplify 2027 in New Orleans.
         </p>
         <a
-          href="https://www.workwave.com"
+          href="https://workwaveconference.cventevents.com/9AWddk"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block bg-magenta hover:bg-magenta-dark text-white font-semibold px-6 py-3 rounded-lg transition-colors"
