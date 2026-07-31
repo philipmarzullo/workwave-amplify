@@ -29,8 +29,6 @@ export default function ChatWidget() {
   const [messages, setMessages] = useState<ChatMessage[]>([])
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
-  const [slowHint, setSlowHint] = useState(false)
-  const slowTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const scrollRef = useRef<HTMLDivElement>(null)
@@ -48,6 +46,10 @@ export default function ChatWidget() {
   useEffect(() => {
     if (isOpen && inputRef.current && window.innerWidth >= 640) {
       inputRef.current.focus()
+    }
+    if (isOpen) {
+      const healthUrl = API_URL.replace('/api/chat', '/health')
+      fetch(healthUrl).catch(() => {})
     }
   }, [isOpen])
 
@@ -79,8 +81,6 @@ export default function ChatWidget() {
     setMessages(updatedMessages)
     setInput('')
     setIsLoading(true)
-    setSlowHint(false)
-    slowTimer.current = setTimeout(() => setSlowHint(true), 5000)
 
     try {
       const res = await fetch(API_URL, {
@@ -103,9 +103,7 @@ export default function ChatWidget() {
         { role: 'assistant', content: errorMessage },
       ])
     } finally {
-      if (slowTimer.current) clearTimeout(slowTimer.current)
       setIsLoading(false)
-      setSlowHint(false)
     }
   }
 
@@ -279,9 +277,6 @@ export default function ChatWidget() {
                         <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
                         <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                       </div>
-                      {slowHint && (
-                        <p className="text-xs text-gray-400 mt-1.5">Warming up, just a moment...</p>
-                      )}
                     </div>
                   </div>
                 )}
