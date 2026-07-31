@@ -5,6 +5,7 @@ import ChatWidget from './components/ChatWidget'
 import HomePage from './pages/HomePage'
 import SessionsPage from './pages/SessionsPage'
 import MyAgendaPage from './pages/MyAgendaPage'
+import FaqPage from './pages/FaqPage'
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/sessions" element={<SessionsPage />} />
         <Route path="/my-agenda" element={<MyAgendaPage />} />
+        <Route path="/faq" element={<FaqPage />} />
       </Routes>
       <Footer />
       <ChatWidget />

@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import { X, Send, ArrowRight } from 'lucide-react'
 import type { ChatMessage } from '../types'
 
@@ -22,6 +23,8 @@ const API_URL = import.meta.env.PROD
   : 'http://localhost:10000/api/chat'
 
 export default function ChatWidget() {
+  const location = useLocation()
+  const isFaqPage = location.pathname === '/faq'
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState<ChatMessage[]>([])
   const [input, setInput] = useState('')
@@ -150,12 +153,21 @@ export default function ChatWidget() {
           transform: scale(1.05);
           box-shadow: 0 6px 20px rgba(0,0,0,0.2);
         }
+        .amp-launcher-attention {
+          animation: amp-attention 2s ease-in-out infinite;
+        }
+        @keyframes amp-attention {
+          0%, 100% { transform: scale(1); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+          15% { transform: scale(1.15) rotate(-5deg); box-shadow: 0 6px 24px rgba(139,61,255,0.4); }
+          30% { transform: scale(1.1) rotate(3deg); box-shadow: 0 6px 24px rgba(139,61,255,0.3); }
+          45% { transform: scale(1.05) rotate(0deg); box-shadow: 0 4px 16px rgba(139,61,255,0.2); }
+        }
       `}</style>
 
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="amp-launcher bg-accent hover:bg-accent-dark text-white flex items-center justify-center"
+          className={`amp-launcher bg-accent hover:bg-accent-dark text-white flex items-center justify-center ${isFaqPage ? 'amp-launcher-attention' : ''}`}
           aria-label="Open chat"
         >
           <BotIcon className="w-7 h-7" />
@@ -300,7 +312,7 @@ export default function ChatWidget() {
                   type="submit"
                   disabled={!input.trim() || isLoading}
                   className="bg-accent hover:bg-accent-dark disabled:bg-gray-200 text-white disabled:text-gray-400 rounded-full flex items-center justify-center transition-colors shrink-0"
-                  style={{ width: '36px', height: '36px' }}
+                  style={{ width: '44px', height: '44px' }}
                   aria-label="Send message"
                 >
                   <Send className="w-4 h-4" />

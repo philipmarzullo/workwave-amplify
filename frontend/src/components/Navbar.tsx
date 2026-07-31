@@ -46,6 +46,9 @@ export default function Navbar() {
             <Link to="/my-agenda" className={`text-sm font-medium ${textColor} ${linkHover} transition-colors`}>
               My Agenda
             </Link>
+            <Link to="/faq" className={`text-sm font-medium ${textColor} ${linkHover} transition-colors`}>
+              FAQ
+            </Link>
             <a
               href="https://workwaveconference.cventevents.com/9AWddk"
               target="_blank"
@@ -73,6 +76,9 @@ export default function Navbar() {
             </Link>
             <Link to="/my-agenda" className="block text-sm font-medium text-navy hover:text-accent">
               My Agenda
+            </Link>
+            <Link to="/faq" className="block text-sm font-medium text-navy hover:text-accent">
+              FAQ
             </Link>
             <a
               href="https://workwaveconference.cventevents.com/9AWddk"

@@ -43,7 +43,7 @@ export default function SessionCard({ session, saved, onToggleSave }: Props) {
         </div>
         <button
           onClick={() => onToggleSave(session.id)}
-          className="shrink-0 p-1.5 rounded-full hover:bg-gray-100 transition-colors"
+          className="shrink-0 p-2.5 -m-1 rounded-full hover:bg-gray-100 transition-colors"
           aria-label={saved ? 'Remove from saved' : 'Save session'}
         >
           <Heart

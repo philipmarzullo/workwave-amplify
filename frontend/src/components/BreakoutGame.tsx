@@ -273,7 +273,7 @@ export default function BreakoutGame({ onClose }: Props) {
 
   return (
     <div className="fixed inset-0 z-[99999]">
-      <canvas ref={canvasRef} className="block w-full h-full" />
+      <canvas ref={canvasRef} className="block w-full h-full" style={{ touchAction: 'none' }} />
 
       {/* Score and Lives */}
       <div className="absolute top-4 left-0 right-0 flex justify-center gap-8 pointer-events-none select-none">

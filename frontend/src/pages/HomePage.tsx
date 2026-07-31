@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Calendar, Users, BarChart3, Zap, Brain, Plug, Shield, Lightbulb, MapPin, ArrowRight, Mic, TrendingUp } from 'lucide-react'
+import { Calendar, Users, BarChart3, Zap, Brain, Plug, Shield, Lightbulb, MapPin, ArrowRight, Mic, TrendingUp, Info } from 'lucide-react'
 import ScrollFadeIn from '../components/ScrollFadeIn'
 import SessionCard from '../components/SessionCard'
 import { sessions } from '../data/sessions'
@@ -32,9 +32,43 @@ const hotTopics = [
 ]
 
 const pricingTiers = [
-  { label: 'Early Bird', price: '$849', dates: 'Jul 15 - Aug 31, 2026', highlight: true },
-  { label: 'General', price: '$949', dates: 'Sep 1, 2026 - Jan 10, 2027', highlight: false },
-  { label: 'Last Chance', price: '$1,195', dates: 'Jan 11 - Feb 1, 2027', highlight: false },
+  {
+    label: 'Early Bird',
+    badge: 'BEST VALUE',
+    price: '849',
+    subtitle: 'Limited time, valid July 15 through August 31.',
+    info: 'For a limited time, get your customer conference ticket at its lowest price. Offer only valid July 15 through August 31. Ticket purchase includes access to all meals, keynotes, sessions and nightly events. A name tag must be worn at all times.',
+    highlight: true,
+  },
+  {
+    label: 'General',
+    price: '949',
+    subtitle: 'Available Sept 1, 2026 to Jan 10, 2027.',
+    info: 'Standard conference pricing. Includes access to all meals, keynotes, sessions and nightly events. A name tag must be worn at all times.',
+    highlight: false,
+  },
+  {
+    label: 'Last Chance',
+    price: '1,195',
+    subtitle: 'Available Jan 11, 2027 to Feb 1, 2027.',
+    info: 'Final registration window. Includes access to all meals, keynotes, sessions and nightly events. A name tag must be worn at all times.',
+    highlight: false,
+  },
+  {
+    label: 'Group (5+)',
+    price: '$50 off',
+    isDiscount: true,
+    subtitle: 'Per ticket when purchasing 5 or more.',
+    info: 'Available through January 31, 2027. $50 discount per ticket when purchasing 5 or more. Can be combined with Early Bird pricing for maximum savings. Includes access to all meals, keynotes, sessions and nightly events.',
+    highlight: false,
+  },
+  {
+    label: 'Plus One',
+    price: '450',
+    subtitle: 'Bring a guest to all nightly events.',
+    info: 'Plus One passes cover nightly events only. No access to daytime sessions, meals, or keynotes. Each attendee is limited to one guest pass. All events are 21 and over.',
+    highlight: false,
+  },
 ]
 
 const testimonials = [
@@ -48,6 +82,7 @@ const platinumPartners = ['Applause', 'Captivated', 'Coast', 'Coalmarch', 'Lawn 
 const goldPartners = ['Azuga', 'Cinch', 'Corteva', 'SameDay']
 
 export default function HomePage() {
+  const [flippedCard, setFlippedCard] = useState<number | null>(null)
   const [savedSessions, setSavedSessions] = useState<number[]>(() => {
     const stored = localStorage.getItem('amplify-saved-sessions')
     return stored ? JSON.parse(stored) : []
@@ -188,37 +223,76 @@ export default function HomePage() {
       </section>
 
       {/* Pricing */}
-      <section className="bg-gray-50 py-20">
+      <section className="bg-navy py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollFadeIn>
-            <h2 className="text-3xl sm:text-4xl font-bold text-navy text-center mb-4 font-display">Registration</h2>
-            <p className="text-gray-500 text-center max-w-2xl mx-auto mb-12">
-              All tickets include meals, keynotes, breakout sessions, and nightly events. Group discount: $50 off per ticket (min 5), combinable with Early Bird.
+            <p className="text-magenta uppercase tracking-widest text-sm font-semibold mb-3 text-center">Conference Pricing</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white text-center mb-4 font-display">Choose your package</h2>
+            <p className="text-gray-400 text-center max-w-2xl mx-auto mb-12">
+              Every ticket includes access to all sessions, keynotes, meals, and nightly events.
             </p>
           </ScrollFadeIn>
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 max-w-5xl mx-auto">
             {pricingTiers.map((tier, i) => (
-              <ScrollFadeIn key={tier.label} delay={i * 100}>
-                <div className={`rounded-xl p-6 text-center border-2 ${tier.highlight ? 'border-magenta bg-white shadow-lg' : 'border-gray-200 bg-white'}`}>
-                  {tier.highlight && <span className="text-xs font-bold text-magenta uppercase tracking-wider">Best Value</span>}
-                  <div className="text-3xl font-extrabold text-navy font-display mt-1 mb-1">{tier.price}</div>
-                  <div className="font-semibold text-navy mb-2">{tier.label}</div>
-                  <div className="text-sm text-gray-400">{tier.dates}</div>
+              <ScrollFadeIn key={tier.label} delay={i * 80}>
+                <div
+                  className={`relative rounded-xl p-5 border transition-all duration-300 cursor-pointer min-h-[200px] flex flex-col ${
+                    tier.highlight
+                      ? 'border-magenta bg-white/5'
+                      : 'border-white/10 bg-white/5 hover:border-white/20'
+                  } ${flippedCard === i ? 'bg-white/10' : ''}`}
+                  onClick={() => setFlippedCard(flippedCard === i ? null : i)}
+                  onMouseEnter={() => setFlippedCard(i)}
+                  onMouseLeave={() => setFlippedCard(null)}
+                >
+                  <button
+                    className="absolute top-3 right-3 w-6 h-6 rounded-full bg-accent/30 flex items-center justify-center"
+                    aria-label="More info"
+                    onClick={(e) => { e.stopPropagation(); setFlippedCard(flippedCard === i ? null : i) }}
+                  >
+                    <Info className="w-3.5 h-3.5 text-white" />
+                  </button>
+
+                  {flippedCard === i ? (
+                    <div className="flex-1 flex items-center">
+                      <p className="text-gray-300 text-xs leading-relaxed">{tier.info}</p>
+                    </div>
+                  ) : (
+                    <div className="flex-1 flex flex-col justify-center">
+                      {'badge' in tier && tier.badge && (
+                        <span className="inline-block text-[10px] font-bold text-magenta border border-magenta rounded px-2 py-0.5 uppercase tracking-wider mb-2 self-start">
+                          {tier.badge}
+                        </span>
+                      )}
+                      <h3 className="text-white font-bold text-sm mb-3">{tier.label}</h3>
+                      <div className="mb-3">
+                        {'isDiscount' in tier && tier.isDiscount ? (
+                          <div className="text-2xl sm:text-3xl font-extrabold text-white font-display">{tier.price}</div>
+                        ) : (
+                          <div className="flex items-start">
+                            <span className="text-white/60 text-sm mt-1">$</span>
+                            <span className="text-3xl sm:text-4xl font-extrabold text-white font-display">{tier.price}</span>
+                          </div>
+                        )}
+                      </div>
+                      <p className="text-gray-400 text-xs leading-snug">{tier.subtitle}</p>
+                    </div>
+                  )}
                 </div>
               </ScrollFadeIn>
             ))}
           </div>
-          <ScrollFadeIn delay={300}>
-            <div className="text-center mt-8">
+          <ScrollFadeIn delay={400}>
+            <div className="text-center mt-10">
               <a
                 href={REGISTER_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-magenta hover:bg-magenta-dark text-white font-bold px-8 py-4 rounded-lg text-lg transition-colors inline-flex items-center gap-2"
+                className="bg-gradient-to-r from-accent to-magenta hover:opacity-90 text-white font-bold px-10 py-4 rounded-lg text-lg transition-opacity inline-flex items-center gap-2"
               >
-                Register Now <ArrowRight className="w-5 h-5" />
+                Register Today <ArrowRight className="w-5 h-5" />
               </a>
-              <p className="text-xs text-gray-400 mt-3">Registration closes January 29, 2027. Plus One guest passes available for $450.</p>
+              <p className="text-xs text-gray-500 mt-3">Registration closes January 29, 2027.</p>
             </div>
           </ScrollFadeIn>
         </div>
