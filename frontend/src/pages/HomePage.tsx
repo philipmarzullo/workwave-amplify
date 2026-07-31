@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Calendar, Users, BarChart3, Zap, Brain, Plug, Shield, Palette, MapPin, ArrowRight } from 'lucide-react'
+import { Calendar, Users, BarChart3, Zap, Brain, Plug, Shield, Lightbulb, MapPin, ArrowRight, Mic, TrendingUp } from 'lucide-react'
 import ScrollFadeIn from '../components/ScrollFadeIn'
 import SessionCard from '../components/SessionCard'
 import { sessions } from '../data/sessions'
@@ -9,15 +9,18 @@ const REGISTER_URL = 'https://workwaveconference.cventevents.com/9AWddk'
 
 const stats = [
   { value: '130+', label: 'Sessions' },
-  { value: '800+', label: 'Attendees' },
+  { value: '1,000+', label: 'Attendees' },
   { value: '4', label: 'Tracks' },
   { value: '4', label: 'Days' },
 ]
 
 const valueProps = [
-  { icon: Users, title: 'Peer Learning', description: 'Connect with 800+ operators who face the same challenges you do. Learn from real businesses solving real problems.' },
-  { icon: BarChart3, title: 'Product Roadmaps', description: 'See what is coming next for PestPac, RealGreen, and TEAM Software. Directly from the product teams.' },
-  { icon: MapPin, title: 'Networking in NOLA', description: 'Structured networking, expo hall, and nightly events on the banks of the Mississippi. During Mardi Gras season.' },
+  { icon: Users, title: 'Network with Purpose', description: 'Connect with 1,000+ industry leaders facing similar operational challenges. Structured networking, expo hall, and nightly events.' },
+  { icon: Lightbulb, title: 'Front-Row Seat to Innovation', description: 'First access to new solutions and AI-focused announcements. See what is coming next directly from the product teams.' },
+  { icon: BarChart3, title: 'Learning Paths by Role', description: 'Customized sessions addressing staffing, AI adoption, and growth. Whether you are an owner, admin, or tech, there is a track for you.' },
+  { icon: Shield, title: 'Industry Expertise', description: 'Combined operational knowledge, data insights, and comprehensive technology platform. 40+ years of industry experience.' },
+  { icon: Mic, title: 'Peer-Led Sessions', description: 'Customer presentations revealing real business strategies and results. Learn from operators who have been where you are.' },
+  { icon: TrendingUp, title: 'Growth Reimagined', description: 'Learn from leaders, grow with peers, build together. Turn knowledge into action you can take home.' },
 ]
 
 const hotTopics = [
@@ -25,7 +28,7 @@ const hotTopics = [
   { icon: Brain, title: 'AI in Field Service', description: 'Practical AI applications delivering real results for field service operations.' },
   { icon: Plug, title: 'Integrations', description: 'Frictionless data flow and connected ecosystems across your tech stack.' },
   { icon: Shield, title: 'Data Security', description: 'Protecting customer and operational data in an evolving threat landscape.' },
-  { icon: Palette, title: 'Growth Strategies', description: 'Peer operators sharing tactics for scaling through labor shortages and rising costs.' },
+  { icon: TrendingUp, title: 'Growth Strategies', description: 'Peer operators sharing tactics for scaling through labor shortages and rising costs.' },
 ]
 
 const pricingTiers = [
@@ -35,13 +38,14 @@ const pricingTiers = [
 ]
 
 const testimonials = [
-  { name: 'Mark Kelbacher', company: 'MissionGreen Services', quote: 'The educational value and peer connections help solve immediate business challenges.' },
-  { name: 'Matteo Stradiotto', company: 'Insight Pest', quote: 'Discovered workflow efficiency opportunities through platform deep-dives.' },
-  { name: 'Dave Koone', company: 'Lawn Doctor', quote: 'The relationship-building and support culture goes beyond just software.' },
-  { name: 'Brad Leahy', company: 'Blades of Green', quote: 'Built lasting professional relationships that continue to drive business growth.' },
+  { name: 'Mark Kelbacher', company: 'MissionGreen Services', quote: 'If you\'re on the fence about attending, just go. The education is outstanding, but what really sets the WorkWave Conference apart are the conversations you\'ll have with other business owners facing the same challenges and opportunities you are.' },
+  { name: 'Matteo Stradiotto', company: 'Insight Pest', quote: 'The most valuable takeaway was discovering how many different ways PestPac can support the same business process. We found opportunities to make workflows more efficient and improve customer experience.' },
+  { name: 'Dave Koone', company: 'Lawn Doctor', quote: 'It\'s not only that the software is great, but the people and support. They actually care about helping us succeed.' },
+  { name: 'Brad Leahy', company: 'Blades of Green', quote: 'The number one thing RealGreen has done for me is build unbelievable relationships and friendships. These conferences and people have helped me grow my business exponentially.' },
 ]
 
-const partners = ['AWS', 'Snowflake', 'Sigma', 'Arrow']
+const platinumPartners = ['Applause', 'Captivated', 'Coast', 'Coalmarch', 'Lawn Pro', 'Voice for Pest']
+const goldPartners = ['Azuga', 'Cinch', 'Corteva', 'SameDay']
 
 export default function HomePage() {
   const [savedSessions, setSavedSessions] = useState<number[]>(() => {
@@ -140,15 +144,15 @@ export default function HomePage() {
           <ScrollFadeIn>
             <h2 className="text-3xl sm:text-4xl font-bold text-navy text-center mb-12 font-display">Why Attend?</h2>
           </ScrollFadeIn>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {valueProps.map((prop, i) => (
-              <ScrollFadeIn key={prop.title} delay={i * 100}>
-                <div className="bg-white rounded-xl p-8 text-center border border-gray-200">
-                  <div className="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mx-auto mb-5">
-                    <prop.icon className="w-7 h-7 text-accent" />
+              <ScrollFadeIn key={prop.title} delay={i * 80}>
+                <div className="bg-white rounded-xl p-6 text-center border border-gray-200">
+                  <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <prop.icon className="w-6 h-6 text-accent" />
                   </div>
-                  <h3 className="text-xl font-bold text-navy mb-3">{prop.title}</h3>
-                  <p className="text-gray-500 leading-relaxed">{prop.description}</p>
+                  <h3 className="text-lg font-bold text-navy mb-2">{prop.title}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed">{prop.description}</p>
                 </div>
               </ScrollFadeIn>
             ))}
@@ -302,18 +306,86 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Partners */}
+      {/* CEO Video */}
+      <section className="bg-navy py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <ScrollFadeIn>
+            <p className="text-magenta uppercase tracking-widest text-sm font-semibold mb-3">Watch Now</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-2 font-display">New Name. Same Great Event.</h2>
+            <p className="text-gray-400 mb-8">A message from our CEO, Kevin Kemmerer</p>
+          </ScrollFadeIn>
+          <ScrollFadeIn delay={100}>
+            <div className="flex justify-center">
+              <div className="rounded-2xl overflow-hidden shadow-2xl" style={{ width: '100%', maxWidth: '380px' }}>
+                <iframe
+                  src="https://fast.wistia.net/embed/iframe/kz7f35jg63?videoFoam=true"
+                  title="A Message from our CEO"
+                  allow="autoplay; fullscreen"
+                  frameBorder="0"
+                  scrolling="no"
+                  style={{ width: '100%', aspectRatio: '4/5' }}
+                />
+              </div>
+            </div>
+          </ScrollFadeIn>
+        </div>
+      </section>
+
+      {/* Platform Logos */}
       <section className="bg-gray-50 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollFadeIn>
-            <p className="text-center text-gray-400 text-sm font-medium mb-8 uppercase tracking-wider">Technology Partners</p>
+            <p className="text-center text-gray-400 text-sm font-medium mb-8 uppercase tracking-wider">Three Platforms. One Conference.</p>
           </ScrollFadeIn>
-          <div className="flex items-center justify-center gap-12 flex-wrap">
-            {partners.map((partner, i) => (
-              <ScrollFadeIn key={partner} delay={i * 80}>
-                <div className="text-2xl font-bold text-gray-300">{partner}</div>
-              </ScrollFadeIn>
-            ))}
+          <div className="flex items-center justify-center gap-8 sm:gap-16 flex-wrap">
+            <ScrollFadeIn delay={0}>
+              <div className="text-center">
+                <div className="text-2xl sm:text-3xl font-bold text-track-pestpac font-display">PestPac</div>
+                <div className="text-xs text-gray-400 mt-1">by WorkWave</div>
+              </div>
+            </ScrollFadeIn>
+            <ScrollFadeIn delay={100}>
+              <div className="text-center">
+                <div className="text-2xl sm:text-3xl font-bold text-track-winteam font-display">TEAM Software</div>
+                <div className="text-xs text-gray-400 mt-1">by WorkWave</div>
+              </div>
+            </ScrollFadeIn>
+            <ScrollFadeIn delay={200}>
+              <div className="text-center">
+                <div className="text-2xl sm:text-3xl font-bold text-track-realgreen font-display">RealGreen</div>
+                <div className="text-xs text-gray-400 mt-1">by WorkWave</div>
+              </div>
+            </ScrollFadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* Partners */}
+      <section className="bg-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollFadeIn>
+            <p className="text-center text-gray-400 text-sm font-medium mb-2 uppercase tracking-wider">Conference Partners</p>
+            <p className="text-center text-xs text-gray-300 mb-8">Interested in partnering? Contact <a href="mailto:jerry.hsu@workwave.com" className="text-accent hover:underline">jerry.hsu@workwave.com</a></p>
+          </ScrollFadeIn>
+          <div className="mb-6">
+            <p className="text-center text-xs text-gray-400 font-semibold uppercase tracking-wider mb-4">Platinum</p>
+            <div className="flex items-center justify-center gap-6 sm:gap-10 flex-wrap">
+              {platinumPartners.map((partner, i) => (
+                <ScrollFadeIn key={partner} delay={i * 60}>
+                  <div className="text-lg sm:text-xl font-bold text-gray-400">{partner}</div>
+                </ScrollFadeIn>
+              ))}
+            </div>
+          </div>
+          <div>
+            <p className="text-center text-xs text-gray-400 font-semibold uppercase tracking-wider mb-4">Gold</p>
+            <div className="flex items-center justify-center gap-6 sm:gap-10 flex-wrap">
+              {goldPartners.map((partner, i) => (
+                <ScrollFadeIn key={partner} delay={i * 60}>
+                  <div className="text-base sm:text-lg font-bold text-gray-300">{partner}</div>
+                </ScrollFadeIn>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -327,7 +399,7 @@ export default function HomePage() {
               Ready to Amplify?
             </h2>
             <p className="text-gray-300 text-lg mb-8 max-w-xl mx-auto">
-              Join 800+ field service professionals at the Hilton New Orleans Riverside. Register today and start building your personalized agenda.
+              Join 1,000+ field service professionals at the Hilton New Orleans Riverside. Laissez les bons temps rouler.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a

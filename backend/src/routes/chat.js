@@ -146,12 +146,41 @@ IMPORTANT POLICIES:
 - Accessibility: Contact events@workwave.com for specific needs.
 - Contact: events@workwave.com for questions.
 - Partner/exhibitor inquiries: Jerry Hsu at jerry.hsu@workwave.com
+- Name badges must be worn at all times. Badges checked at all entry points. No reprints.
+- Passes are non-transferable once the event begins.
+
+VIRTUAL OPTION:
+Select sessions will be available on demand after the event, but in-person attendance is strongly encouraged for the full experience.
+
+CONFERENCE APP:
+Download the conference app (available December 2026) to view all sessions, build a personalized schedule, and view hotel floor maps. Expert consultations can be booked via the app the week before the event.
+
+CONFERENCE PARTNERS:
+Platinum: Applause, Captivated, Coast, Coalmarch, Lawn Pro, Voice for Pest
+Gold: Azuga, Cinch, Corteva, SameDay
 
 CUSTOMER TESTIMONIALS:
-- Mark Kelbacher, MissionGreen Services: Highlights educational value and peer connections solving immediate business challenges.
-- Matteo Stradiotto, Insight Pest: Discovered workflow efficiency opportunities through platform deep-dives.
-- Dave Koone, Lawn Doctor: Emphasizes relationship-building and support culture beyond software.
-- Brad Leahy, Blades of Green: Credits the event for building lasting professional relationships driving business growth.
+- Mark Kelbacher, MissionGreen Services: "If you're on the fence about attending, just go. The education is outstanding, but what really sets it apart are the conversations with other business owners facing the same challenges."
+- Matteo Stradiotto, Insight Pest: "The most valuable takeaway was discovering how many different ways PestPac can support the same business process."
+- Dave Koone, Lawn Doctor: "It's not only that the software is great, but the people and support. They actually care about helping us succeed."
+- Brad Leahy, Blades of Green: "The number one thing RealGreen has done for me is build unbelievable relationships. These conferences have helped me grow my business exponentially."
+
+FREQUENTLY ASKED QUESTIONS:
+- Why the name change? Beyond Service became WorkWave Amplify to reflect the focus on amplifying growth, impact, and results.
+- Who should attend? Users of PestPac, RealGreen, or TEAM Software across all roles.
+- Virtual? Select sessions available on demand, but in-person is recommended.
+- Dietary restrictions? Indicate during registration.
+- Conference app? Available December 2026 for schedule building and floor maps.
+- Can I attend sessions outside my track? Yes, all sessions are open to all attendees. No pre-registration needed except bootcamps and expert appointments.
+- What are Product Bootcamps? Hands-on workshops included in your ticket. Bring your laptop and work with experts using your company data. Pre-registration required.
+- Meet the Product Experts? 30-minute consultations covering reporting, demos, configuration, APIs. Book via app one week before.
+- Can I bring a guest? Plus One passes ($450) available for nightly events only. One guest per attendee.
+- Children? All events are strictly 21 and over. No exceptions.
+- Dress code? Business casual. Slacks, jeans, casual suits. Comfortable shoes and layers.
+- Refunds? Full refund until December 11, 2026. After that, transfer to a colleague or credit toward future conference.
+- Last day to register? January 29, 2027.
+- Badge pickup? Opens Sunday January 31 at 8 AM. Afternoon pickup recommended.
+- Mardi Gras impact? Yes, it falls during Mardi Gras season. Expect street closures and busy airports. Book early.
 
 ABOUT WORKWAVE:
 WorkWave is a cloud-based software provider empowering service professionals in field service industries. 40+ years of industry experience. 375,000 mobile service professionals trust the platform. Headquartered in Holmdel, NJ.

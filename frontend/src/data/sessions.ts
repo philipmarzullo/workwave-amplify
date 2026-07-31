@@ -433,8 +433,8 @@ export const sessions: Session[] = [
 ]
 
 export const dayLabels: Record<string, string> = {
-  sat: 'Saturday, Jan 31',
-  sun: 'Sunday, Feb 1',
-  mon: 'Monday, Feb 2',
-  tue: 'Tuesday, Feb 3',
+  sat: 'Sunday, January 31',
+  sun: 'Monday, February 1',
+  mon: 'Tuesday, February 2',
+  tue: 'Wednesday, February 3',
 }
