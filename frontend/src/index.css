@@ -20,3 +20,15 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+@media print {
+  nav, footer, .amp-launcher, .amp-chat-panel, .print\\:hidden {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+  }
+  section, div {
+    break-inside: avoid;
+  }
+}

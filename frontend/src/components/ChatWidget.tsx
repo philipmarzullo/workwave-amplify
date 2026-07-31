@@ -217,7 +217,7 @@ export default function ChatWidget() {
                 <BotIcon className="w-5 h-5 text-magenta" />
               </div>
               <div>
-                <div className="text-white text-sm font-semibold leading-tight">Amplify Assistant</div>
+                <div className="text-white text-sm font-semibold leading-tight">AMPLIFY Assistant</div>
                 <div className="text-gray-400 text-xs leading-tight">Ask about sessions, tracks, or the conference</div>
               </div>
             </div>
@@ -242,7 +242,7 @@ export default function ChatWidget() {
                   <div className="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-3">
                     <BotIcon className="w-6 h-6 text-accent" />
                   </div>
-                  <p className="text-sm text-gray-600 font-medium mb-1">Hey, excited about Amplify?</p>
+                  <p className="text-sm text-gray-600 font-medium mb-1">Hey, excited about AMPLIFY?</p>
                   <p className="text-xs text-gray-400 leading-relaxed">
                     Ask about sessions, tracks, speakers, or what to expect in New Orleans.
                   </p>
@@ -326,7 +326,7 @@ export default function ChatWidget() {
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="Ask about Amplify..."
+                  placeholder="Ask about AMPLIFY..."
                   className="flex-1 border border-gray-200 bg-gray-50 focus:bg-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
                   style={{
                     fontSize: '16px',

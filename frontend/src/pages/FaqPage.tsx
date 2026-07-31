@@ -27,8 +27,8 @@ const faqSections: { title: string; items: FaqItem[] }[] = [
     title: 'General',
     items: [
       {
-        question: 'Why did Beyond Service change to WorkWave Amplify?',
-        answer: 'For years, our customer conference has been a place to learn, connect, and share ideas. As our customers have grown, we\'ve evolved too. The rebrand to Amplify reflects our focus on helping attendees amplify their growth, impact, and results.',
+        question: 'Why did Beyond Service change to WorkWave AMPLIFY?',
+        answer: 'For years, our customer conference has been a place to learn, connect, and share ideas. As our customers have grown, we\'ve evolved too. The rebrand to AMPLIFY reflects our focus on helping attendees amplify their growth, impact, and results.',
       },
       {
         question: 'Who should attend the conference?',
@@ -195,7 +195,7 @@ export default function FaqPage() {
         <div className="text-center mb-10">
           <h1 className="text-3xl sm:text-4xl font-bold text-navy mb-2 font-display">Frequently Asked Questions</h1>
           <p className="text-gray-500 max-w-xl mx-auto">
-            Everything you need to know about WorkWave Amplify 2027. Can't find your answer? Ask our conference assistant.
+            Everything you need to know about WorkWave AMPLIFY 2027. Can't find your answer? Ask our conference assistant.
           </p>
         </div>
 
@@ -211,7 +211,7 @@ export default function FaqPage() {
             <div>
               <p className="font-semibold text-navy text-sm mb-1">Got a question not listed here? Ask our AI assistant.</p>
               <p className="text-sm text-gray-500">
-                It knows everything about Amplify 2027, from sessions and tracks to travel tips and registration. Click here to start chatting.
+                It knows everything about AMPLIFY 2027, from sessions and tracks to travel tips and registration. Click here to start chatting.
               </p>
             </div>
           </button>

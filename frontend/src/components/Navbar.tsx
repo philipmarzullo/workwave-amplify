@@ -36,7 +36,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <Link to="/" className={`flex items-center gap-2 font-display font-bold text-xl ${textColor}`}>
             <Zap className="w-7 h-7 text-magenta" />
-            Amplify
+            AMPLIFY
           </Link>
 
           <div className="hidden md:flex items-center gap-8">

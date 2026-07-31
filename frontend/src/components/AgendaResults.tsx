@@ -95,10 +95,10 @@ function generateIcs(sessionList: Session[]): string {
   return [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//WorkWave Amplify 2027//EN',
+    'PRODID:-//WorkWave AMPLIFY 2027//EN',
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
-    'X-WR-CALNAME:WorkWave Amplify 2027',
+    'X-WR-CALNAME:WorkWave AMPLIFY 2027',
     'X-WR-TIMEZONE:America/Chicago',
     'BEGIN:VTIMEZONE',
     'TZID:America/Chicago',
@@ -128,7 +128,7 @@ function downloadIcs(sessionList: Session[]) {
   const url = URL.createObjectURL(blob)
   const a = document.createElement('a')
   a.href = url
-  a.download = 'workwave-amplify-2027.ics'
+  a.download = 'workwave-AMPLIFY-2027.ics'
   document.body.appendChild(a)
   a.click()
   document.body.removeChild(a)
@@ -257,7 +257,7 @@ export default function AgendaResults({ persona, onReset }: Props) {
       <div className="text-center mt-8 p-6 bg-navy rounded-xl">
         <h3 className="text-white font-bold text-lg mb-2">Ready to experience it live?</h3>
         <p className="text-gray-300 text-sm mb-4">
-          Register for WorkWave Amplify 2027 in New Orleans.
+          Register for WorkWave AMPLIFY 2027 in New Orleans.
         </p>
         <a
           href="https://workwaveconference.cventevents.com/9AWddk"

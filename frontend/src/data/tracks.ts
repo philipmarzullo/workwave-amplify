@@ -19,7 +19,7 @@ export const tracks: TrackConfig[] = [
   },
   {
     id: 'realgreen',
-    label: 'Real Green',
+    label: 'RealGreen',
     color: '#22c55e',
     bgClass: 'bg-track-realgreen',
     textClass: 'text-track-realgreen',

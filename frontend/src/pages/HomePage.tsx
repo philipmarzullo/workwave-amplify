@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react'
 const REGISTER_URL = 'https://workwaveconference.cventevents.com/9AWddk'
 
 const stats = [
-  { value: '130+', label: 'Sessions' },
+  { value: '100+', label: 'Sessions' },
   { value: '1,000+', label: 'Attendees' },
   { value: '4', label: 'Tracks' },
   { value: '4', label: 'Days' },
@@ -24,7 +24,7 @@ const valueProps = [
 ]
 
 const hotTopics = [
-  { icon: BarChart3, title: 'WaveLytics', description: 'The new business analytics platform powered by Snowflake and Sigma. Big focus this year.' },
+  { icon: BarChart3, title: 'Wavelytics', description: 'The new business analytics platform powered by Snowflake and Sigma. Big focus this year.' },
   { icon: Brain, title: 'AI in Field Service', description: 'Practical AI applications delivering real results for field service operations.' },
   { icon: Plug, title: 'Integrations', description: 'Frictionless data flow and connected ecosystems across your tech stack.' },
   { icon: Shield, title: 'Data Security', description: 'Protecting customer and operational data in an evolving threat landscape.' },
@@ -470,7 +470,7 @@ export default function HomePage() {
           <ScrollFadeIn>
             <Zap className="w-12 h-12 text-magenta mx-auto mb-6" />
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 font-display">
-              Ready to Amplify?
+              Ready to AMPLIFY?
             </h2>
             <p className="text-gray-300 text-lg mb-8 max-w-xl mx-auto">
               Join 1,000+ field service professionals at the Hilton New Orleans Riverside. Laissez les bons temps rouler.

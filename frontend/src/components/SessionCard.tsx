@@ -18,7 +18,7 @@ export default function SessionCard({ session, saved, onToggleSave }: Props) {
   const track = getTrack(session.track)
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 p-5 hover:shadow-md transition-shadow">
+    <div className={`bg-white rounded-xl border p-5 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 ${session.customerLed ? 'border-magenta/40 ring-1 ring-magenta/10' : 'border-gray-200'}`}>
       <div className="flex items-start justify-between gap-3 mb-3">
         <div className="flex flex-wrap gap-2">
           <span

@@ -20,7 +20,7 @@ export default function Footer() {
             <div className="md:col-span-1">
               <div className="flex items-center gap-2 font-display font-bold text-lg mb-3">
                 <Zap className="w-6 h-6 text-magenta" />
-                WorkWave Amplify
+                WorkWave AMPLIFY
               </div>
               <p className="text-sm text-gray-400 leading-relaxed">
                 Jan 31 - Feb 3, 2027<br />

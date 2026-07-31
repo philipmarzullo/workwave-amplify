@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from 'react'
+import { Printer } from 'lucide-react'
 import type { Track, SessionType, Day } from '../types'
 import { sessions, dayLabels } from '../data/sessions'
 import SessionCard from '../components/SessionCard'
@@ -54,11 +55,19 @@ export default function SessionsPage() {
   return (
     <div className="min-h-screen bg-gray-50 pt-24 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <h1 className="text-3xl sm:text-4xl font-bold text-navy mb-2 font-display">All Sessions</h1>
-          <p className="text-gray-500">
-            Browse {sessions.length} sessions across 4 tracks and 4 days. Save your favorites.
-          </p>
+        <div className="mb-8 flex items-start justify-between gap-4">
+          <div>
+            <h1 className="text-3xl sm:text-4xl font-bold text-navy mb-2 font-display">All Sessions</h1>
+            <p className="text-gray-500">
+              Browse {sessions.length} sessions across 4 tracks and 4 days. Save your favorites.
+            </p>
+          </div>
+          <button
+            onClick={() => window.print()}
+            className="hidden sm:inline-flex items-center gap-2 text-sm text-gray-500 hover:text-navy border border-gray-200 hover:border-gray-300 px-4 py-2 rounded-lg transition-colors shrink-0 print:hidden"
+          >
+            <Printer className="w-4 h-4" /> Print
+          </button>
         </div>
 
         <SessionFilters
