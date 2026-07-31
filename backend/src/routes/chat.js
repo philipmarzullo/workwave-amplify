@@ -256,6 +256,7 @@ router.post('/', async (req, res) => {
       body: JSON.stringify({
         model: 'claude-haiku-4-5-20251001',
         max_tokens: 200,
+        stream: true,
         system: SYSTEM_PROMPT,
         messages: messages.slice(-6).map(m => ({
           role: m.role,
@@ -270,13 +271,45 @@ router.post('/', async (req, res) => {
       return res.status(502).json({ error: 'Chat service temporarily unavailable' });
     }
 
-    const data = await response.json();
-    const assistantMessage = data.content?.[0]?.text || 'Sorry, I was unable to generate a response.';
+    res.setHeader('Content-Type', 'text/event-stream');
+    res.setHeader('Cache-Control', 'no-cache');
+    res.setHeader('Connection', 'keep-alive');
 
-    res.json({ message: assistantMessage });
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop() || '';
+
+      for (const line of lines) {
+        if (!line.startsWith('data: ')) continue;
+        const data = line.slice(6);
+        if (data === '[DONE]') continue;
+
+        try {
+          const event = JSON.parse(data);
+          if (event.type === 'content_block_delta' && event.delta?.text) {
+            res.write(`data: ${JSON.stringify({ text: event.delta.text })}\n\n`);
+          }
+        } catch {}
+      }
+    }
+
+    res.write('data: [DONE]\n\n');
+    res.end();
   } catch (err) {
     console.error('Chat proxy error:', err.message);
-    res.status(500).json({ error: 'Failed to process chat request' });
+    if (!res.headersSent) {
+      res.status(500).json({ error: 'Failed to process chat request' });
+    } else {
+      res.end();
+    }
   }
 });
 

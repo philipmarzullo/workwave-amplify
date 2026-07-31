@@ -37,8 +37,3 @@ app.use((err, _req, res, _next) => {
 app.listen(PORT, () => {
   console.log(`WorkWave Amplify backend running on port ${PORT}`);
 });
-
-// Keep alive ping for Render free tier
-setInterval(() => {
-  fetch(`http://localhost:${PORT}/health`).catch(() => {});
-}, 13 * 60 * 1000);

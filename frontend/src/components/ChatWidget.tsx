@@ -94,8 +94,36 @@ export default function ChatWidget() {
         throw new Error(err.error || 'Something went wrong')
       }
 
-      const data = await res.json()
-      setMessages([...updatedMessages, { role: 'assistant', content: data.message }])
+      const reader = res.body!.getReader()
+      const decoder = new TextDecoder()
+      let assistantContent = ''
+      let buffer = ''
+
+      setMessages([...updatedMessages, { role: 'assistant', content: '' }])
+      setIsLoading(false)
+
+      while (true) {
+        const { done, value } = await reader.read()
+        if (done) break
+
+        buffer += decoder.decode(value, { stream: true })
+        const lines = buffer.split('\n')
+        buffer = lines.pop() || ''
+
+        for (const line of lines) {
+          if (!line.startsWith('data: ')) continue
+          const data = line.slice(6)
+          if (data === '[DONE]') continue
+
+          try {
+            const event = JSON.parse(data)
+            if (event.text) {
+              assistantContent += event.text
+              setMessages([...updatedMessages, { role: 'assistant', content: assistantContent }])
+            }
+          } catch {}
+        }
+      }
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : 'Something went wrong'
       setMessages([
