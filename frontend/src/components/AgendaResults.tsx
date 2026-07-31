@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { RotateCcw, Download, ExternalLink } from 'lucide-react'
+import { RotateCcw, Download, ExternalLink, FileText } from 'lucide-react'
 import type { PersonaSelection, Session, Day } from '../types'
 import { sessions, dayLabels } from '../data/sessions'
 import { getTrack } from '../data/tracks'
@@ -149,6 +149,67 @@ function googleCalendarUrl(session: Session): string {
   return `https://calendar.google.com/calendar/render?${params.toString()}`
 }
 
+function downloadPdf(grouped: Map<Day, { session: Session; score: number }[]>) {
+  const win = window.open('', '_blank')
+  if (!win) return
+
+  const dayHtml = Array.from(grouped.entries()).map(([day, items]) => {
+    const rows = items.map(({ session }) => {
+      const track = getTrack(session.track)
+      return `
+        <tr>
+          <td style="padding:8px 12px;border-bottom:1px solid #eee;width:80px;vertical-align:top;color:#666;font-size:13px;">${session.time}</td>
+          <td style="padding:8px 12px;border-bottom:1px solid #eee;vertical-align:top;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+              <span style="background:${track.color};color:#fff;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;">${track.label}</span>
+              ${session.customerLed ? '<span style="background:#fdf2f8;color:#E8005E;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;">Customer-Led</span>' : ''}
+            </div>
+            <div style="font-weight:600;color:#0A1128;font-size:14px;">${session.title}</div>
+            <div style="color:#666;font-size:12px;margin-top:2px;">${session.speaker}</div>
+          </td>
+        </tr>`
+    }).join('')
+
+    return `
+      <div style="margin-bottom:24px;">
+        <h2 style="font-size:16px;color:#0A1128;border-bottom:2px solid #8B3DFF;padding-bottom:6px;margin-bottom:0;">${dayLabels[day]}</h2>
+        <table style="width:100%;border-collapse:collapse;">${rows}</table>
+      </div>`
+  }).join('')
+
+  win.document.write(`<!DOCTYPE html>
+<html>
+<head>
+  <title>My AMPLIFY 2027 Agenda</title>
+  <style>
+    @media print { body { print-color-adjust: exact; -webkit-print-color-adjust: exact; } }
+    body { font-family: -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; margin:0; padding:40px; color:#333; }
+  </style>
+</head>
+<body>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;padding-bottom:20px;border-bottom:3px solid #0A1128;">
+    <div>
+      <div style="font-size:28px;font-weight:800;color:#0A1128;letter-spacing:1px;">AMPLIFY</div>
+      <div style="font-size:12px;color:#666;margin-top:2px;">WorkWave Customer Conference 2027</div>
+    </div>
+    <div style="text-align:right;">
+      <div style="font-size:12px;color:#666;">January 31 - February 3, 2027</div>
+      <div style="font-size:12px;color:#666;">Hilton New Orleans Riverside</div>
+    </div>
+  </div>
+  <h1 style="font-size:20px;color:#0A1128;margin-bottom:4px;">Your Personalized Agenda</h1>
+  <p style="color:#888;font-size:13px;margin-bottom:24px;">Based on your role, product, and interests</p>
+  ${dayHtml}
+  <div style="margin-top:32px;padding:16px;background:#0A1128;border-radius:8px;text-align:center;">
+    <div style="color:#fff;font-weight:600;font-size:14px;">Register at workwaveconference.cventevents.com</div>
+    <div style="color:#999;font-size:12px;margin-top:4px;">Your industry. Your success. Your conference, in the spirit of New Orleans.</div>
+  </div>
+</body>
+</html>`)
+  win.document.close()
+  setTimeout(() => win.print(), 300)
+}
+
 export default function AgendaResults({ persona, onReset }: Props) {
   const recommended = useMemo(() => {
     const scored = sessions.map(s => ({
@@ -192,6 +253,12 @@ export default function AgendaResults({ persona, onReset }: Props) {
             className="inline-flex items-center gap-2 text-sm bg-blue-brand text-white hover:opacity-90 font-medium px-4 py-2 rounded-lg transition-opacity"
           >
             <Download className="w-4 h-4" /> Export for Outlook / Apple
+          </button>
+          <button
+            onClick={() => downloadPdf(grouped)}
+            className="inline-flex items-center gap-2 text-sm bg-navy text-white hover:opacity-90 font-medium px-4 py-2 rounded-lg transition-opacity"
+          >
+            <FileText className="w-4 h-4" /> Download PDF
           </button>
           <button
             onClick={onReset}
