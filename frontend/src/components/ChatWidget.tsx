@@ -24,7 +24,7 @@ const API_URL = import.meta.env.PROD
 
 export default function ChatWidget() {
   const location = useLocation()
-  const isFaqPage = location.pathname === '/faq'
+  const shouldAnimate = location.pathname === '/faq' || location.pathname === '/'
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState<ChatMessage[]>([])
   const [input, setInput] = useState('')
@@ -34,6 +34,12 @@ export default function ChatWidget() {
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const scrollRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handler = () => setIsOpen(true)
+    window.addEventListener('open-chat', handler)
+    return () => window.removeEventListener('open-chat', handler)
+  }, [])
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -167,7 +173,7 @@ export default function ChatWidget() {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className={`amp-launcher bg-accent hover:bg-accent-dark text-white flex items-center justify-center ${isFaqPage ? 'amp-launcher-attention' : ''}`}
+          className={`amp-launcher bg-accent hover:bg-accent-dark text-white flex items-center justify-center ${shouldAnimate ? 'amp-launcher-attention' : ''}`}
           aria-label="Open chat"
         >
           <BotIcon className="w-7 h-7" />

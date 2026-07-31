@@ -1,6 +1,21 @@
 import { useState } from 'react'
-import { ChevronDown, MessageCircle } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 import ScrollFadeIn from '../components/ScrollFadeIn'
+
+function BotIcon({ className = 'w-6 h-6' }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="32" cy="8" r="4" fill="currentColor" />
+      <rect x="30" y="11" width="4" height="8" rx="2" fill="currentColor" />
+      <rect x="10" y="18" width="44" height="36" rx="14" fill="currentColor" />
+      <ellipse cx="24" cy="35" rx="5" ry="5.5" fill="white" />
+      <ellipse cx="40" cy="35" rx="5" ry="5.5" fill="white" />
+      <rect x="24" y="44" width="16" height="3" rx="1.5" fill="white" />
+      <rect x="4" y="30" width="6" height="12" rx="3" fill="currentColor" />
+      <rect x="54" y="30" width="6" height="12" rx="3" fill="currentColor" />
+    </svg>
+  )
+}
 
 interface FaqItem {
   question: string
@@ -155,6 +170,10 @@ function FaqAccordion({ item, isOpen, onToggle }: { item: FaqItem; isOpen: boole
   )
 }
 
+function openChat() {
+  window.dispatchEvent(new Event('open-chat'))
+}
+
 export default function FaqPage() {
   const [openItems, setOpenItems] = useState<Set<string>>(new Set())
 
@@ -182,17 +201,20 @@ export default function FaqPage() {
 
         {/* Chat bot nudge */}
         <ScrollFadeIn>
-          <div className="bg-accent/5 border border-accent/20 rounded-xl p-5 mb-10 flex items-start gap-4">
+          <button
+            onClick={openChat}
+            className="w-full text-left bg-accent/5 border border-accent/20 rounded-xl p-5 mb-10 flex items-start gap-4 hover:bg-accent/10 hover:border-accent/30 transition-colors cursor-pointer"
+          >
             <div className="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
-              <MessageCircle className="w-5 h-5 text-accent" />
+              <BotIcon className="w-6 h-6 text-accent" />
             </div>
             <div>
-              <p className="font-semibold text-navy text-sm mb-1">Got a question not listed here?</p>
+              <p className="font-semibold text-navy text-sm mb-1">Got a question not listed here? Ask our AI assistant.</p>
               <p className="text-sm text-gray-500">
-                Our AI conference assistant knows everything about Amplify 2027, from sessions and tracks to travel tips and registration. Try asking it anything using the chat icon in the bottom right corner.
+                It knows everything about Amplify 2027, from sessions and tracks to travel tips and registration. Click here to start chatting.
               </p>
             </div>
-          </div>
+          </button>
         </ScrollFadeIn>
 
         {faqSections.map((section) => (
@@ -221,11 +243,17 @@ export default function FaqPage() {
         {/* Bottom chat nudge */}
         <ScrollFadeIn>
           <div className="text-center mt-12 p-8 bg-navy rounded-xl">
-            <MessageCircle className="w-10 h-10 text-accent mx-auto mb-3" />
+            <BotIcon className="w-10 h-10 text-accent mx-auto mb-3" />
             <h3 className="text-white font-bold text-lg mb-2">Still have questions?</h3>
             <p className="text-gray-300 text-sm mb-4 max-w-md mx-auto">
-              Our conference assistant is available 24/7. Ask about sessions, registration, travel, or anything else. Just click the chat icon.
+              Our conference assistant is available 24/7. Ask about sessions, registration, travel, or anything else.
             </p>
+            <button
+              onClick={openChat}
+              className="bg-accent hover:bg-accent-dark text-white font-semibold px-6 py-3 rounded-lg transition-colors mb-3"
+            >
+              Chat with our assistant
+            </button>
             <p className="text-gray-500 text-xs">
               Or email <a href="mailto:events@workwave.com" className="text-accent hover:underline">events@workwave.com</a>
             </p>
