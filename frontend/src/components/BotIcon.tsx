@@ -4,9 +4,9 @@ export default function BotIcon({ className = 'w-6 h-6', faceColor = 'white' }: 
       <circle cx="32" cy="8" r="4" fill="currentColor" />
       <rect x="30" y="11" width="4" height="8" rx="2" fill="currentColor" />
       <rect x="10" y="18" width="44" height="36" rx="14" fill="currentColor" />
-      <ellipse cx="24" cy="35" rx="5" ry="5.5" fill={faceColor} />
-      <ellipse cx="40" cy="35" rx="5" ry="5.5" fill={faceColor} />
-      <rect x="24" y="44" width="16" height="3" rx="1.5" fill={faceColor} />
+      <circle cx="24" cy="33" r="4.5" fill={faceColor} />
+      <circle cx="40" cy="33" r="4.5" fill={faceColor} />
+      <path d="M22 43 Q32 50 42 43" stroke={faceColor} strokeWidth="3" strokeLinecap="round" fill="none" />
       <rect x="4" y="30" width="6" height="12" rx="3" fill="currentColor" />
       <rect x="54" y="30" width="6" height="12" rx="3" fill="currentColor" />
     </svg>
