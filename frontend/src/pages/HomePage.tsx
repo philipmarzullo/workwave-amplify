@@ -436,22 +436,13 @@ export default function HomePage() {
           </ScrollFadeIn>
           <div className="flex items-center justify-center gap-8 sm:gap-16 flex-wrap">
             <ScrollFadeIn delay={0}>
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-track-pestpac font-display">PestPac</div>
-                <div className="text-xs text-gray-400 mt-1">by WorkWave</div>
-              </div>
+              <img src="/logos/pestpac-logo-stacked.svg" alt="PestPac by WorkWave" className="h-16 sm:h-20" />
             </ScrollFadeIn>
             <ScrollFadeIn delay={100}>
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-track-winteam font-display">TEAM Software</div>
-                <div className="text-xs text-gray-400 mt-1">by WorkWave</div>
-              </div>
+              <img src="/logos/team-software-logo-stacked.svg" alt="TEAM Software by WorkWave" className="h-16 sm:h-20" />
             </ScrollFadeIn>
             <ScrollFadeIn delay={200}>
-              <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-track-realgreen font-display">RealGreen</div>
-                <div className="text-xs text-gray-400 mt-1">by WorkWave</div>
-              </div>
+              <img src="/logos/realgreen-logo-stacked.svg" alt="RealGreen by WorkWave" className="h-16 sm:h-20" />
             </ScrollFadeIn>
           </div>
         </div>

@@ -2,7 +2,7 @@ import { useState, lazy, Suspense } from 'react'
 import { Link } from 'react-router-dom'
 import { Zap } from 'lucide-react'
 
-const BreakoutGame = lazy(() => import('./BreakoutGame'))
+const WhackAMoleGame = lazy(() => import('./WhackAMoleGame'))
 
 export default function Footer() {
   const [showGame, setShowGame] = useState(false)
@@ -11,7 +11,7 @@ export default function Footer() {
     <>
       {showGame && (
         <Suspense fallback={null}>
-          <BreakoutGame onClose={() => setShowGame(false)} />
+          <WhackAMoleGame onClose={() => setShowGame(false)} />
         </Suspense>
       )}
       <footer className="bg-navy-dark text-white">

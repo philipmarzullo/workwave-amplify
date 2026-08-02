@@ -63,6 +63,7 @@ workwave-amplify/
 
 ## Easter Egg
 
-- Breakout/Arkanoid game in canvas
+- "Field Service Frenzy" whack-a-mole game (DOM/Tailwind, not canvas)
 - Triggered from footer "Need a break?" link
-- Track-colored bricks
+- 60-second timed game with 4x4 grid; industry problems pop up to be solved
+- Four industries: Pest (#E8005E), Lawn (#22c55e), Security (#264BEE), Janitorial (#8B3DFF)
