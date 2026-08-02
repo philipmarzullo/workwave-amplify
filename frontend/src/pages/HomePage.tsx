@@ -110,10 +110,9 @@ export default function HomePage() {
         }} />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
           <ScrollFadeIn>
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <Zap className="w-10 h-10 sm:w-12 sm:h-12 text-magenta" />
+            <div className="flex items-center justify-center mb-6">
+              <img src="/logos/ww-logo-white.svg" alt="WorkWave" className="h-8 sm:h-10" />
             </div>
-            <p className="text-gray-400 uppercase tracking-widest text-sm font-semibold mb-4">WorkWave</p>
             <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl font-extrabold text-white leading-none mb-2">
               AMPLIFY
             </h1>
