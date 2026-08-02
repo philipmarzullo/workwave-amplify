@@ -369,7 +369,7 @@ export default function HomePage() {
       </section>
 
       {/* Venue */}
-      <section className="bg-white py-20">
+      <section id="travel" className="bg-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollFadeIn>
             <h2 className="text-3xl sm:text-4xl font-bold text-navy text-center mb-4 font-display">The Venue</h2>
@@ -429,27 +429,36 @@ export default function HomePage() {
       </section>
 
       {/* Platform Logos */}
-      <section className="bg-gray-50 py-16">
+      <section id="platforms" className="bg-navy py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollFadeIn>
-            <p className="text-center text-gray-400 text-sm font-medium mb-8 uppercase tracking-wider">Three Platforms. One Conference.</p>
+            <p className="text-center text-gray-400 text-sm font-medium mb-10 uppercase tracking-wider">Three Platforms. One Conference.</p>
           </ScrollFadeIn>
-          <div className="flex items-center justify-center gap-8 sm:gap-16 flex-wrap">
+          <div className="flex items-center justify-center flex-wrap">
             <ScrollFadeIn delay={0}>
-              <img src="/logos/pestpac-logo-stacked.svg" alt="PestPac by WorkWave" className="h-16 sm:h-20" />
+              <div className="flex items-center justify-center px-6 sm:px-10 py-4">
+                <img src="/logos/pestpac-logo-white.svg" alt="PestPac by WorkWave" className="h-10 sm:h-12" />
+              </div>
             </ScrollFadeIn>
+            <div className="hidden sm:block w-px h-12 bg-white/20" />
             <ScrollFadeIn delay={100}>
-              <img src="/logos/team-software-logo-stacked.svg" alt="TEAM Software by WorkWave" className="h-16 sm:h-20" />
+              <div className="flex items-center justify-center px-6 sm:px-10 py-4">
+                <img src="/logos/team-software-logo-white.svg" alt="TEAM Software by WorkWave" className="h-10 sm:h-12" />
+              </div>
             </ScrollFadeIn>
+            <div className="hidden sm:block w-px h-12 bg-white/20" />
             <ScrollFadeIn delay={200}>
-              <img src="/logos/realgreen-logo-stacked.svg" alt="RealGreen by WorkWave" className="h-16 sm:h-20" />
+              <div className="flex items-center justify-center px-6 sm:px-10 py-4">
+                <img src="/logos/realgreen-logo-white.svg" alt="RealGreen by WorkWave" className="h-10 sm:h-12" />
+              </div>
             </ScrollFadeIn>
           </div>
+          <div className="mt-8 h-1 bg-gradient-to-r from-track-pestpac via-track-winteam to-track-realgreen rounded-full max-w-4xl mx-auto" />
         </div>
       </section>
 
       {/* Partners */}
-      <section className="bg-white py-16">
+      <section id="partners" className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollFadeIn>
             <p className="text-center text-gray-400 text-sm font-medium mb-2 uppercase tracking-wider">Conference Partners</p>
