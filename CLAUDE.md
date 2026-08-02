@@ -63,7 +63,7 @@ workwave-amplify/
 
 ## Easter Egg
 
-- "Field Service Frenzy" whack-a-mole game (DOM/Tailwind, not canvas)
+- "AMPLIFY Arcade" with 4 industry-themed mini-games
 - Triggered from footer "Need a break?" link
-- 60-second timed game with 4x4 grid; industry problems pop up to be solved
-- Four industries: Pest (#E8005E), Lawn (#22c55e), Security (#264BEE), Janitorial (#8B3DFF)
+- Bug Blaster (Pest), Mow Master (Lawn), Night Watch (Security), Spill Squad (Janitorial)
+- Each game has unique mechanics, 30-second rounds, and score tiers
