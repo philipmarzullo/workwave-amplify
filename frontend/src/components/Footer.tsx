@@ -1,6 +1,5 @@
 import { useState, lazy, Suspense } from 'react'
 import { Link } from 'react-router-dom'
-import { Zap } from 'lucide-react'
 
 const GameArcade = lazy(() => import('./GameArcade'))
 
@@ -18,9 +17,9 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="md:col-span-1">
-              <div className="flex items-center gap-2 font-display font-bold text-lg mb-3">
-                <Zap className="w-6 h-6 text-magenta" />
-                WorkWave AMPLIFY
+              <div className="flex items-center gap-2 mb-3">
+                <img src="/logos/ww-logo-white.svg" alt="WorkWave" className="h-6" />
+                <span className="font-display font-bold text-lg">AMPLIFY</span>
               </div>
               <p className="text-sm text-gray-400 leading-relaxed">
                 Jan 31 - Feb 3, 2027<br />
