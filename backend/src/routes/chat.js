@@ -87,6 +87,7 @@ DATES & VENUE:
 - Hilton New Orleans Riverside, 2 Poydras Street, New Orleans, LA 70130
 - On the banks of the Mississippi River
 - 16 miles from Louis Armstrong New Orleans International Airport (MSY), about 25-30 min drive
+- Lakefront Airport (NEW) approximately 10 minutes from hotel (private/charter flights)
 - Note: This falls during Mardi Gras season. Street closures and parade traffic possible. Book flights early.
 - Weather: February in New Orleans averages highs in the mid-60s F, lows in the 40s. Bring layers and an umbrella.
 
@@ -136,7 +137,9 @@ REGISTRATION & PRICING:
 
 HOTEL:
 - Hilton New Orleans Riverside, 2 Poydras Street
+- Exclusive rate: $289 per night
 - Group rate available until January 6, 2027. After that, rates increase and rooms may sell out.
+- Passkey booking link provided after conference registration
 - Badge pickup opens Sunday January 31 at 8 AM. Afternoon pickup recommended to avoid Monday morning delays.
 
 IMPORTANT POLICIES:
@@ -160,6 +163,8 @@ WEBSITE FEATURES:
 - Build My Agenda quiz: Take a quick quiz about your role, product, and interests to get personalized session recommendations. Available at /my-agenda.
 - Share via Email: After getting your personalized agenda, share it with your boss or colleagues via email to help justify attendance.
 - Browse & Filter Sessions: All 100+ sessions are browsable and filterable by track, type, and day at /sessions.
+- Partners page at /partners with sponsor tiers and partnership inquiries.
+- Travel & Hotel page at /travel with hotel booking info, transportation, and weather.
 
 CONFERENCE PARTNERS:
 Platinum: Applause, Captivated, Coast, Coalmarch, Lawn Pro, Voice for Pest

@@ -22,7 +22,7 @@ workwave-amplify/
 │   └── src/
 │       ├── data/         # Static seed data (sessions, tracks, personas)
 │       ├── components/   # Reusable components
-│       └── pages/        # Route pages
+│       └── pages/        # Route pages (Home, Sessions, MyAgenda, FAQ, Partners, Travel)
 └── backend/              # Express API proxy
     └── src/
         ├── server.js     # Express setup

@@ -79,8 +79,6 @@ const testimonials = [
   { name: 'Brad Leahy', company: 'Blades of Green', quote: 'The number one thing RealGreen has done for me is build unbelievable relationships and friendships. These conferences and people have helped me grow my business exponentially.' },
 ]
 
-const platinumPartners = ['Applause', 'Captivated', 'Coast', 'Coalmarch', 'Lawn Pro', 'Voice for Pest']
-const goldPartners = ['Azuga', 'Cinch', 'Corteva', 'SameDay']
 
 export default function HomePage() {
   const [flippedCard, setFlippedCard] = useState<number | null>(null)
@@ -368,36 +366,36 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Venue */}
-      <section id="travel" className="bg-white py-20">
+      {/* Explore More */}
+      <section className="bg-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollFadeIn>
-            <h2 className="text-3xl sm:text-4xl font-bold text-navy text-center mb-4 font-display">The Venue</h2>
-            <p className="text-gray-500 text-center max-w-2xl mx-auto mb-10">
-              Hilton New Orleans Riverside, 2 Poydras Street, on the banks of the Mississippi River. 16 miles from MSY airport.
-            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-navy text-center mb-10 font-display">Explore More</h2>
           </ScrollFadeIn>
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
             <ScrollFadeIn delay={0}>
-              <div className="bg-gray-50 rounded-xl p-6 text-center">
-                <div className="text-2xl mb-2">🎭</div>
-                <h3 className="font-semibold text-navy mb-1">Mardi Gras Season</h3>
-                <p className="text-sm text-gray-500">The conference falls during Mardi Gras. Book flights early for the best rates.</p>
-              </div>
+              <Link to="/partners" className="block bg-gray-50 rounded-xl p-6 border border-gray-200 hover:shadow-md hover:border-accent/30 transition-all group">
+                <div className="w-11 h-11 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
+                  <Users className="w-5 h-5 text-accent" />
+                </div>
+                <h3 className="font-bold text-navy mb-2">Conference Partners</h3>
+                <p className="text-sm text-gray-500 mb-3">Meet the companies partnering with AMPLIFY 2027. Learn about sponsorship tiers and partnership opportunities.</p>
+                <span className="text-accent font-medium text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                  View Partners <ArrowRight className="w-4 h-4" />
+                </span>
+              </Link>
             </ScrollFadeIn>
             <ScrollFadeIn delay={100}>
-              <div className="bg-gray-50 rounded-xl p-6 text-center">
-                <div className="text-2xl mb-2">🏨</div>
-                <h3 className="font-semibold text-navy mb-1">Hotel Block</h3>
-                <p className="text-sm text-gray-500">Group rate available until January 6, 2027. After that, rates go up and rooms may sell out.</p>
-              </div>
-            </ScrollFadeIn>
-            <ScrollFadeIn delay={200}>
-              <div className="bg-gray-50 rounded-xl p-6 text-center">
-                <div className="text-2xl mb-2">🌡️</div>
-                <h3 className="font-semibold text-navy mb-1">Weather</h3>
-                <p className="text-sm text-gray-500">February in New Orleans: highs in the mid-60s, lows in the 40s. Bring layers and an umbrella.</p>
-              </div>
+              <Link to="/travel" className="block bg-gray-50 rounded-xl p-6 border border-gray-200 hover:shadow-md hover:border-accent/30 transition-all group">
+                <div className="w-11 h-11 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
+                  <MapPin className="w-5 h-5 text-accent" />
+                </div>
+                <h3 className="font-bold text-navy mb-2">Travel & Hotel</h3>
+                <p className="text-sm text-gray-500 mb-3">Hotel booking at $289/night, airport info, local transport, and weather tips for your trip to New Orleans.</p>
+                <span className="text-accent font-medium text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                  View Travel Info <ArrowRight className="w-4 h-4" />
+                </span>
+              </Link>
             </ScrollFadeIn>
           </div>
         </div>
@@ -457,35 +455,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Partners */}
-      <section id="partners" className="bg-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollFadeIn>
-            <p className="text-center text-gray-400 text-sm font-medium mb-2 uppercase tracking-wider">Conference Partners</p>
-            <p className="text-center text-xs text-gray-300 mb-8">Interested in partnering? Contact <a href="mailto:jerry.hsu@workwave.com" className="text-accent hover:underline">jerry.hsu@workwave.com</a></p>
-          </ScrollFadeIn>
-          <div className="mb-6">
-            <p className="text-center text-xs text-gray-400 font-semibold uppercase tracking-wider mb-4">Platinum</p>
-            <div className="flex items-center justify-center gap-6 sm:gap-10 flex-wrap">
-              {platinumPartners.map((partner, i) => (
-                <ScrollFadeIn key={partner} delay={i * 60}>
-                  <div className="text-lg sm:text-xl font-bold text-gray-400">{partner}</div>
-                </ScrollFadeIn>
-              ))}
-            </div>
-          </div>
-          <div>
-            <p className="text-center text-xs text-gray-400 font-semibold uppercase tracking-wider mb-4">Gold</p>
-            <div className="flex items-center justify-center gap-6 sm:gap-10 flex-wrap">
-              {goldPartners.map((partner, i) => (
-                <ScrollFadeIn key={partner} delay={i * 60}>
-                  <div className="text-base sm:text-lg font-bold text-gray-300">{partner}</div>
-                </ScrollFadeIn>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Final CTA */}
       <section className="bg-navy py-20">
