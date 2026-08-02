@@ -65,5 +65,10 @@ workwave-amplify/
 
 - "AMPLIFY Arcade" with an endless runner game: Service Dash
 - Triggered from footer "Need a break?" link
-- Service Dash: dodge industry hazards (pests 🪲, overgrowth 🌿, flashlights 🔦, toilets 🚽) while collecting ⭐. Arrow keys or tap to switch lanes, speed ramps up
+- Service Dash: 3-lane endless runner, dodge industry hazards, collect power-ups
+- 20 obstacle types unlocked progressively by score (pest, lawn, security, janitorial)
+- Power-ups: ⭐ points, 💵 2x multiplier, 🧤 shield, 🏆 big points, ☕ invulnerability
+- Special mechanics: 🦨 fog overlay, 😴 sluggish controls, 🦝 dodgy lane-switching
+- Fast movers: 🐀, 🪳, 🕷️, 🦟 — move faster than normal obstacles
+- Arrow keys or tap to switch lanes, speed ramps up, 3 lives
 - Tiers: Fleet Commander (2000+), Route Pro (1000+), Dispatcher (500+), Trainee (0+)

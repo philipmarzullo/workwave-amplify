@@ -81,7 +81,7 @@ export default function GameArcade({ onClose }: { onClose: () => void }) {
             Endless Runner
           </div>
           <div className="text-gray-500 text-sm mt-2 leading-snug">
-            Dodge industry hazards and collect stars as your service van races through the field.
+            Dodge pests, overgrowth, and more across all four industries. Grab power-ups, survive special hazards, and see how far you can go.
           </div>
         </button>
 

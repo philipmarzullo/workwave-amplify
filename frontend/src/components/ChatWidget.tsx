@@ -72,8 +72,8 @@ export default function ChatWidget() {
     return () => el?.removeEventListener('focus', onFocusIn)
   }, [isOpen])
 
-  async function sendMessage() {
-    const text = input.trim()
+  async function sendMessage(overrideText?: string) {
+    const text = (overrideText ?? input).trim()
     if (!text || isLoading) return
 
     const userMessage: ChatMessage = { role: 'user', content: text }
@@ -238,14 +238,30 @@ export default function ChatWidget() {
           >
             <div style={{ padding: '16px' }}>
               {messages.length === 0 && (
-                <div className="text-center py-6">
+                <div className="text-center py-4">
                   <div className="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-3">
                     <BotIcon className="w-6 h-6 text-accent" />
                   </div>
-                  <p className="text-sm text-gray-600 font-medium mb-1">Hey, excited about AMPLIFY?</p>
-                  <p className="text-xs text-gray-400 leading-relaxed">
-                    Ask about sessions, tracks, speakers, or what to expect in New Orleans.
+                  <p className="text-sm text-gray-600 font-medium mb-1">Your AMPLIFY concierge, powered by AI</p>
+                  <p className="text-xs text-gray-400 leading-relaxed mb-4">
+                    I know every session, speaker, and detail about the conference. Ask me anything.
                   </p>
+                  <div className="flex flex-wrap justify-center gap-2">
+                    {[
+                      'What sessions should I attend?',
+                      'Tell me about New Orleans',
+                      'How much does it cost?',
+                      "What's new this year?",
+                    ].map((prompt) => (
+                      <button
+                        key={prompt}
+                        onClick={() => sendMessage(prompt)}
+                        className="text-xs border border-accent/30 text-accent rounded-full px-3 py-1.5 hover:bg-accent/5 transition-colors cursor-pointer"
+                      >
+                        {prompt}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               )}
 

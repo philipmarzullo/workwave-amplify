@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Calendar, Users, BarChart3, Zap, Brain, Plug, Shield, Lightbulb, MapPin, ArrowRight, Mic, TrendingUp, Info, HelpCircle } from 'lucide-react'
+import { Calendar, Users, BarChart3, Zap, Brain, Plug, Shield, Lightbulb, MapPin, ArrowRight, Mic, TrendingUp, Info, HelpCircle, MessageSquare } from 'lucide-react'
 import ScrollFadeIn from '../components/ScrollFadeIn'
 import SessionCard from '../components/SessionCard'
 import LivePoll from '../components/LivePoll'
@@ -410,6 +410,39 @@ export default function HomePage() {
               </Link>
             </ScrollFadeIn>
           </div>
+        </div>
+      </section>
+
+      {/* AI Assistant CTA */}
+      <section className="bg-navy py-20 relative overflow-hidden">
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(139,61,255,0.15) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(232,0,94,0.1) 0%, transparent 50%)'
+        }} />
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollFadeIn>
+            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+              <div className="shrink-0">
+                <div className="w-20 h-20 bg-accent/20 rounded-2xl flex items-center justify-center">
+                  <MessageSquare className="w-10 h-10 text-accent" />
+                </div>
+              </div>
+              <div className="text-center md:text-left flex-1">
+                <p className="text-accent uppercase tracking-widest text-xs font-semibold mb-2">Powered by AI</p>
+                <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3 font-display">
+                  Meet Your AMPLIFY Concierge
+                </h2>
+                <p className="text-gray-300 leading-relaxed mb-6 max-w-xl">
+                  Not sure which sessions fit your role? Curious about New Orleans? Our AI assistant knows every session, speaker, and conference detail. Ask it anything, and get answers instantly.
+                </p>
+                <button
+                  onClick={() => window.dispatchEvent(new CustomEvent('open-chat'))}
+                  className="bg-accent hover:bg-accent-dark text-white font-semibold px-6 py-3 rounded-lg transition-colors inline-flex items-center gap-2 cursor-pointer"
+                >
+                  Ask the Assistant <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          </ScrollFadeIn>
         </div>
       </section>
 
