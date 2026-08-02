@@ -153,6 +153,12 @@ export default function HomePage() {
               >
                 Build My Agenda
               </Link>
+              <a
+                href="#poll"
+                className="border-2 border-white/20 hover:border-white/40 text-white font-semibold px-8 py-4 rounded-lg text-lg transition-colors"
+              >
+                Take The Poll
+              </a>
             </div>
           </ScrollFadeIn>
         </div>
@@ -507,6 +513,12 @@ export default function HomePage() {
               >
                 Build My Agenda
               </Link>
+              <a
+                href="#poll"
+                className="border-2 border-white/20 hover:border-white/40 text-white font-semibold px-8 py-4 rounded-lg text-lg transition-colors"
+              >
+                Take The Poll
+              </a>
             </div>
           </ScrollFadeIn>
         </div>
