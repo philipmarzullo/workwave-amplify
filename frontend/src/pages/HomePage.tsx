@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Calendar, Users, BarChart3, Zap, Brain, Plug, Shield, Lightbulb, MapPin, ArrowRight, Mic, TrendingUp, Info, HelpCircle, MessageSquare } from 'lucide-react'
+import { Calendar, Users, BarChart3, Zap, Brain, Plug, Shield, Lightbulb, MapPin, ArrowRight, Mic, TrendingUp, Info, HelpCircle, Bot } from 'lucide-react'
 import ScrollFadeIn from '../components/ScrollFadeIn'
 import SessionCard from '../components/SessionCard'
 import LivePoll from '../components/LivePoll'
@@ -423,7 +423,7 @@ export default function HomePage() {
             <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
               <div className="shrink-0">
                 <div className="w-20 h-20 bg-accent/20 rounded-2xl flex items-center justify-center">
-                  <MessageSquare className="w-10 h-10 text-accent" />
+                  <Bot className="w-10 h-10 text-accent" />
                 </div>
               </div>
               <div className="text-center md:text-left flex-1">
