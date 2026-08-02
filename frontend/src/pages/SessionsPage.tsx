@@ -9,9 +9,9 @@ const dayOrder: Day[] = ['sat', 'sun', 'mon', 'tue']
 
 export default function SessionsPage() {
   const [search, setSearch] = useState('')
-  const [trackFilter, setTrackFilter] = useState<Track | ''>('')
-  const [typeFilter, setTypeFilter] = useState<SessionType | ''>('')
-  const [dayFilter, setDayFilter] = useState<Day | ''>('')
+  const [trackFilter, setTrackFilter] = useState<Track[]>([])
+  const [typeFilter, setTypeFilter] = useState<SessionType[]>([])
+  const [dayFilter, setDayFilter] = useState<Day[]>([])
 
   const [savedSessions, setSavedSessions] = useState<number[]>(() => {
     const stored = localStorage.getItem('amplify-saved-sessions')
@@ -30,9 +30,9 @@ export default function SessionsPage() {
 
   const filtered = useMemo(() => {
     return sessions.filter(s => {
-      if (trackFilter && s.track !== trackFilter) return false
-      if (typeFilter && s.type !== typeFilter) return false
-      if (dayFilter && s.day !== dayFilter) return false
+      if (trackFilter.length > 0 && !trackFilter.includes(s.track)) return false
+      if (typeFilter.length > 0 && !typeFilter.includes(s.type)) return false
+      if (dayFilter.length > 0 && !dayFilter.includes(s.day)) return false
       if (search) {
         const q = search.toLowerCase()
         if (!s.title.toLowerCase().includes(q) && !s.speaker.toLowerCase().includes(q)) return false

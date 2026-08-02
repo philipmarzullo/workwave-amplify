@@ -5,12 +5,12 @@ import { tracks } from '../data/tracks'
 interface Props {
   search: string
   onSearchChange: (v: string) => void
-  trackFilter: Track | ''
-  onTrackChange: (v: Track | '') => void
-  typeFilter: SessionType | ''
-  onTypeChange: (v: SessionType | '') => void
-  dayFilter: Day | ''
-  onDayChange: (v: Day | '') => void
+  trackFilter: Track[]
+  onTrackChange: (v: Track[]) => void
+  typeFilter: SessionType[]
+  onTypeChange: (v: SessionType[]) => void
+  dayFilter: Day[]
+  onDayChange: (v: Day[]) => void
 }
 
 const types: { id: SessionType; label: string }[] = [
@@ -29,18 +29,22 @@ const days: { id: Day; label: string }[] = [
 const inactiveChip =
   'bg-white border border-gray-200 text-gray-600 hover:border-gray-300'
 
+function toggle<T>(arr: T[], val: T): T[] {
+  return arr.includes(val) ? arr.filter(v => v !== val) : [...arr, val]
+}
+
 export default function SessionFilters({
   search, onSearchChange,
   trackFilter, onTrackChange,
   typeFilter, onTypeChange,
   dayFilter, onDayChange,
 }: Props) {
-  const hasFilters = trackFilter !== '' || typeFilter !== '' || dayFilter !== ''
+  const hasFilters = trackFilter.length > 0 || typeFilter.length > 0 || dayFilter.length > 0
 
   function clearAll() {
-    onTrackChange('')
-    onTypeChange('')
-    onDayChange('')
+    onTrackChange([])
+    onTypeChange([])
+    onDayChange([])
     onSearchChange('')
   }
 
@@ -61,9 +65,9 @@ export default function SessionFilters({
       {/* Day tabs */}
       <div className="flex flex-wrap gap-2">
         <button
-          onClick={() => onDayChange('')}
+          onClick={() => onDayChange([])}
           className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-            dayFilter === ''
+            dayFilter.length === 0
               ? 'bg-navy text-white'
               : inactiveChip
           }`}
@@ -73,9 +77,9 @@ export default function SessionFilters({
         {days.map(d => (
           <button
             key={d.id}
-            onClick={() => onDayChange(dayFilter === d.id ? '' : d.id)}
+            onClick={() => onDayChange(toggle(dayFilter, d.id))}
             className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-              dayFilter === d.id
+              dayFilter.includes(d.id)
                 ? 'bg-navy text-white'
                 : inactiveChip
             }`}
@@ -91,13 +95,13 @@ export default function SessionFilters({
         {tracks.map(t => (
           <button
             key={t.id}
-            onClick={() => onTrackChange(trackFilter === t.id ? '' : t.id)}
+            onClick={() => onTrackChange(toggle(trackFilter, t.id))}
             className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
-              trackFilter === t.id
+              trackFilter.includes(t.id)
                 ? 'text-white'
                 : inactiveChip
             }`}
-            style={trackFilter === t.id ? { backgroundColor: t.color } : undefined}
+            style={trackFilter.includes(t.id) ? { backgroundColor: t.color } : undefined}
           >
             {t.label}
           </button>
@@ -110,9 +114,9 @@ export default function SessionFilters({
         {types.map(t => (
           <button
             key={t.id}
-            onClick={() => onTypeChange(typeFilter === t.id ? '' : t.id)}
+            onClick={() => onTypeChange(toggle(typeFilter, t.id))}
             className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
-              typeFilter === t.id
+              typeFilter.includes(t.id)
                 ? 'bg-accent text-white'
                 : inactiveChip
             }`}
