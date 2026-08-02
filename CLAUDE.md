@@ -63,7 +63,7 @@ workwave-amplify/
 
 ## Easter Egg
 
-- "AMPLIFY Arcade" with a route optimization puzzle game: Route Runner
+- "AMPLIFY Arcade" with an endless runner game: Service Dash
 - Triggered from footer "Need a break?" link
-- Route Runner: plan the shortest service route by clicking job stops in order across 5 rounds (4-8 stops), 15 seconds per round
-- Score based on efficiency vs. optimal path; tiers: Fleet Commander (500+), Route Pro (350+), Dispatcher (200+), Trainee (0+)
+- Service Dash: dodge industry hazards (pests 🪲, overgrowth 🌿, flashlights 🔦, toilets 🚽) while collecting ⭐. Arrow keys or tap to switch lanes, speed ramps up
+- Tiers: Fleet Commander (2000+), Route Pro (1000+), Dispatcher (500+), Trainee (0+)

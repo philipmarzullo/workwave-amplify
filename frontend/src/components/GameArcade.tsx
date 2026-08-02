@@ -1,6 +1,6 @@
 import { useState, useEffect, lazy, Suspense } from 'react'
 
-const RouteRunner = lazy(() => import('./games/RouteRunner'))
+const ServiceDash = lazy(() => import('./games/ServiceDash'))
 
 export default function GameArcade({ onClose }: { onClose: () => void }) {
   const [playing, setPlaying] = useState(false)
@@ -33,7 +33,7 @@ export default function GameArcade({ onClose }: { onClose: () => void }) {
           </div>
         }
       >
-        <RouteRunner onClose={onClose} onBack={handleBack} />
+        <ServiceDash onClose={onClose} onBack={handleBack} />
       </Suspense>
     )
   }
@@ -56,7 +56,7 @@ export default function GameArcade({ onClose }: { onClose: () => void }) {
           AMPLIFY Arcade
         </h2>
         <p className="text-gray-400 mb-8 text-sm sm:text-base">
-          Think you can beat the optimal route?
+          How far can you go?
         </p>
 
         <button
@@ -76,12 +76,12 @@ export default function GameArcade({ onClose }: { onClose: () => void }) {
           }}
         >
           <div className="text-5xl sm:text-6xl mb-3">🚐</div>
-          <div className="font-bold text-white text-xl sm:text-2xl mb-1">Route Runner</div>
+          <div className="font-bold text-white text-xl sm:text-2xl mb-1">Service Dash</div>
           <div className="text-sm font-semibold" style={{ color: '#22c55e' }}>
-            Route Optimization Puzzle
+            Endless Runner
           </div>
           <div className="text-gray-500 text-sm mt-2 leading-snug">
-            Plan the shortest service route across 5 rounds of increasing complexity.
+            Dodge industry hazards and collect stars as your service van races through the field.
           </div>
         </button>
 
