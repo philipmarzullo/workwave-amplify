@@ -1,62 +1,15 @@
 import { useState, useEffect, lazy, Suspense } from 'react'
 
-const BugBlaster = lazy(() => import('./games/BugBlaster'))
-const MowMaster = lazy(() => import('./games/MowMaster'))
-const NightWatch = lazy(() => import('./games/NightWatch'))
-const SpillSquad = lazy(() => import('./games/SpillSquad'))
-
-type GameId = 'pest' | 'lawn' | 'security' | 'janitorial'
-
-const GAMES: {
-  id: GameId
-  name: string
-  emoji: string
-  platform: string
-  tagline: string
-  color: string
-}[] = [
-  {
-    id: 'pest',
-    name: 'Bug Blaster',
-    emoji: '🪲',
-    platform: 'PestPac',
-    tagline: 'Squash bugs before they reach the house!',
-    color: '#E8005E',
-  },
-  {
-    id: 'lawn',
-    name: 'Mow Master',
-    emoji: '🌿',
-    platform: 'RealGreen',
-    tagline: 'Keep every lawn perfectly trimmed.',
-    color: '#22c55e',
-  },
-  {
-    id: 'security',
-    name: 'Night Watch',
-    emoji: '🔒',
-    platform: 'WinTeam',
-    tagline: 'Spot intruders on the camera feeds.',
-    color: '#264BEE',
-  },
-  {
-    id: 'janitorial',
-    name: 'Spill Squad',
-    emoji: '🧹',
-    platform: 'Joint',
-    tagline: 'Mop spills before they spread!',
-    color: '#8B3DFF',
-  },
-]
+const RouteRunner = lazy(() => import('./games/RouteRunner'))
 
 export default function GameArcade({ onClose }: { onClose: () => void }) {
-  const [selectedGame, setSelectedGame] = useState<GameId | null>(null)
+  const [playing, setPlaying] = useState(false)
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        if (selectedGame) {
-          setSelectedGame(null)
+        if (playing) {
+          setPlaying(false)
         } else {
           onClose()
         }
@@ -64,11 +17,11 @@ export default function GameArcade({ onClose }: { onClose: () => void }) {
     }
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
-  }, [onClose, selectedGame])
+  }, [onClose, playing])
 
-  const handleBack = () => setSelectedGame(null)
+  const handleBack = () => setPlaying(false)
 
-  if (selectedGame) {
+  if (playing) {
     return (
       <Suspense
         fallback={
@@ -80,10 +33,7 @@ export default function GameArcade({ onClose }: { onClose: () => void }) {
           </div>
         }
       >
-        {selectedGame === 'pest' && <BugBlaster onClose={onClose} onBack={handleBack} />}
-        {selectedGame === 'lawn' && <MowMaster onClose={onClose} onBack={handleBack} />}
-        {selectedGame === 'security' && <NightWatch onClose={onClose} onBack={handleBack} />}
-        {selectedGame === 'janitorial' && <SpillSquad onClose={onClose} onBack={handleBack} />}
+        <RouteRunner onClose={onClose} onBack={handleBack} />
       </Suspense>
     )
   }
@@ -106,39 +56,34 @@ export default function GameArcade({ onClose }: { onClose: () => void }) {
           AMPLIFY Arcade
         </h2>
         <p className="text-gray-400 mb-8 text-sm sm:text-base">
-          Pick your industry. Play your game.
+          Think you can beat the optimal route?
         </p>
 
-        <div className="grid grid-cols-2 gap-3 sm:gap-4">
-          {GAMES.map(game => (
-            <button
-              key={game.id}
-              onClick={() => setSelectedGame(game.id)}
-              className="group relative rounded-2xl p-4 sm:p-5 text-left transition-all duration-200 cursor-pointer"
-              style={{
-                backgroundColor: 'rgba(255,255,255,0.05)',
-                border: `2px solid ${game.color}33`,
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.borderColor = game.color
-                e.currentTarget.style.boxShadow = `0 0 20px ${game.color}22`
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.borderColor = `${game.color}33`
-                e.currentTarget.style.boxShadow = 'none'
-              }}
-            >
-              <div className="text-3xl sm:text-4xl mb-2">{game.emoji}</div>
-              <div className="font-bold text-white text-sm sm:text-base">{game.name}</div>
-              <div className="text-xs font-semibold mt-0.5" style={{ color: game.color }}>
-                {game.platform}
-              </div>
-              <div className="text-gray-500 text-xs mt-1.5 leading-snug">
-                {game.tagline}
-              </div>
-            </button>
-          ))}
-        </div>
+        <button
+          onClick={() => setPlaying(true)}
+          className="group relative rounded-2xl p-6 sm:p-8 text-center transition-all duration-200 cursor-pointer w-full max-w-sm mx-auto block"
+          style={{
+            backgroundColor: 'rgba(255,255,255,0.05)',
+            border: '2px solid #22c55e33',
+          }}
+          onMouseEnter={e => {
+            e.currentTarget.style.borderColor = '#22c55e'
+            e.currentTarget.style.boxShadow = '0 0 20px #22c55e22'
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.borderColor = '#22c55e33'
+            e.currentTarget.style.boxShadow = 'none'
+          }}
+        >
+          <div className="text-5xl sm:text-6xl mb-3">🚐</div>
+          <div className="font-bold text-white text-xl sm:text-2xl mb-1">Route Runner</div>
+          <div className="text-sm font-semibold" style={{ color: '#22c55e' }}>
+            Route Optimization Puzzle
+          </div>
+          <div className="text-gray-500 text-sm mt-2 leading-snug">
+            Plan the shortest service route across 5 rounds of increasing complexity.
+          </div>
+        </button>
 
         <p className="text-gray-600 text-xs mt-6">Press Esc to close</p>
       </div>

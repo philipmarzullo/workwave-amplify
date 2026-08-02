@@ -63,7 +63,7 @@ workwave-amplify/
 
 ## Easter Egg
 
-- "AMPLIFY Arcade" with 4 industry-themed mini-games
+- "AMPLIFY Arcade" with a route optimization puzzle game: Route Runner
 - Triggered from footer "Need a break?" link
-- Bug Blaster (Pest), Mow Master (Lawn), Night Watch (Security), Spill Squad (Janitorial)
-- Each game has unique mechanics, 30-second rounds, and score tiers
+- Route Runner: plan the shortest service route by clicking job stops in order across 5 rounds (4-8 stops), 15 seconds per round
+- Score based on efficiency vs. optimal path; tiers: Fleet Commander (500+), Route Pro (350+), Dispatcher (200+), Trainee (0+)
