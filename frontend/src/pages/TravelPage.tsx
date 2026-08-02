@@ -2,6 +2,7 @@ import { MapPin, Plane, Hotel, CloudRain, PartyPopper, ArrowRight, Zap, Navigati
 import ScrollFadeIn from '../components/ScrollFadeIn'
 
 const REGISTER_URL = 'https://workwaveconference.cventevents.com/9AWddk'
+const HOTEL_URL = 'https://www.hilton.com/en/hotels/msynhhh-hilton-new-orleans-riverside/'
 
 export default function TravelPage() {
   return (
@@ -38,7 +39,15 @@ export default function TravelPage() {
             <ScrollFadeIn delay={100}>
               <div className="bg-gray-50 rounded-xl border border-gray-200 p-8">
                 <h3 className="text-xl font-bold text-navy mb-1">Hilton New Orleans Riverside</h3>
-                <p className="text-gray-500 text-sm mb-6">2 Poydras Street, New Orleans, LA 70130</p>
+                <p className="text-gray-500 text-sm mb-2">2 Poydras Street, New Orleans, LA 70130</p>
+                <a
+                  href={HOTEL_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent hover:text-accent/80 text-sm font-semibold inline-flex items-center gap-1 mb-6 transition-colors"
+                >
+                  Check out the venue <ArrowRight className="w-3.5 h-3.5" />
+                </a>
 
                 <div className="grid sm:grid-cols-2 gap-6 mb-6">
                   <div className="bg-white rounded-lg p-5 border border-gray-200">
@@ -57,7 +66,9 @@ export default function TravelPage() {
                   <div className="space-y-3">
                     <div className="flex items-start gap-3">
                       <span className="flex items-center justify-center w-6 h-6 rounded-full bg-accent text-white text-xs font-bold shrink-0">1</span>
-                      <p className="text-sm text-gray-500">Register for the conference through the registration link.</p>
+                      <p className="text-sm text-gray-500">
+                        <a href={REGISTER_URL} target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/80 font-semibold transition-colors">Register for the conference</a> to unlock your exclusive hotel rate.
+                      </p>
                     </div>
                     <div className="flex items-start gap-3">
                       <span className="flex items-center justify-center w-6 h-6 rounded-full bg-accent text-white text-xs font-bold shrink-0">2</span>
@@ -67,6 +78,25 @@ export default function TravelPage() {
                       <span className="flex items-center justify-center w-6 h-6 rounded-full bg-accent text-white text-xs font-bold shrink-0">3</span>
                       <p className="text-sm text-gray-500">Book through Passkey and receive your hotel confirmation directly.</p>
                     </div>
+                  </div>
+
+                  <div className="border-t border-gray-200 pt-6 flex flex-col sm:flex-row gap-3">
+                    <a
+                      href={REGISTER_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-magenta hover:bg-magenta-dark text-white font-bold px-6 py-3 rounded-lg text-sm transition-colors inline-flex items-center justify-center gap-2"
+                    >
+                      Register to Unlock Booking Link <ArrowRight className="w-4 h-4" />
+                    </a>
+                    <a
+                      href={HOTEL_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-gray-200 hover:bg-gray-300 text-navy font-bold px-6 py-3 rounded-lg text-sm transition-colors inline-flex items-center justify-center gap-2"
+                    >
+                      Check out the venue <ArrowRight className="w-4 h-4" />
+                    </a>
                   </div>
                 </div>
               </div>
