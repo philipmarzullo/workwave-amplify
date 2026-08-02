@@ -46,6 +46,9 @@ export default function Navbar() {
             <Link to="/my-agenda" className={`text-sm font-medium ${textColor} ${linkHover} transition-colors`}>
               My Agenda
             </Link>
+            <a href="/#poll" className={`text-sm font-medium ${textColor} ${linkHover} transition-colors`}>
+              Poll
+            </a>
             <Link to="/faq" className={`text-sm font-medium ${textColor} ${linkHover} transition-colors`}>
               FAQ
             </Link>
@@ -77,6 +80,9 @@ export default function Navbar() {
             <Link to="/my-agenda" className="block text-sm font-medium text-navy hover:text-accent">
               My Agenda
             </Link>
+            <a href="/#poll" className="block text-sm font-medium text-navy hover:text-accent">
+              Poll
+            </a>
             <Link to="/faq" className="block text-sm font-medium text-navy hover:text-accent">
               FAQ
             </Link>

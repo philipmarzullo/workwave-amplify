@@ -224,12 +224,13 @@ export default function HomePage() {
       </section>
 
       {/* Live Poll */}
-      <section className="bg-gray-50 py-20">
+      <section id="poll" className="bg-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollFadeIn>
-            <h2 className="text-3xl sm:text-4xl font-bold text-navy text-center mb-4 font-display">Quick Poll</h2>
+            <p className="text-accent uppercase tracking-widest text-sm font-semibold mb-3 text-center">Benchmark Yourself</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-navy text-center mb-4 font-display">How Do You Compare?</h2>
             <p className="text-gray-500 text-center max-w-2xl mx-auto mb-12">
-              What are fellow attendees most looking forward to? Cast your vote.
+              Vote and see how your priorities stack up against 1,000+ fellow attendees.
             </p>
           </ScrollFadeIn>
           <ScrollFadeIn delay={100}>

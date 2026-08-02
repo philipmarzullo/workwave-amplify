@@ -54,7 +54,7 @@ export default function LivePoll() {
   const maxVotes = Math.max(...poll.votes, 1)
 
   return (
-    <div className="max-w-2xl mx-auto">
+    <div className="max-w-2xl mx-auto bg-white rounded-2xl border-2 border-accent/20 shadow-lg p-6 sm:p-8">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center">
           <BarChart3 className="w-5 h-5 text-accent" />
@@ -109,7 +109,13 @@ export default function LivePoll() {
               </div>
             )
           })}
-          <p className="text-xs text-gray-400 text-center mt-2">{poll.total} vote{poll.total !== 1 ? 's' : ''}</p>
+          {votedIndex >= 0 && poll.total > 0 && (
+            <p className="text-sm text-accent font-medium text-center mt-3">
+              You and {Math.round((poll.votes[votedIndex] / poll.total) * 100)}% of attendees agree.
+            </p>
+          )}
+          <p className="text-xs text-gray-400 text-center">{poll.total} vote{poll.total !== 1 ? 's' : ''}</p>
+          <p className="text-xs text-gray-300 text-center italic">Full live leaderboard launches at AMPLIFY 2027.</p>
         </div>
       )}
     </div>

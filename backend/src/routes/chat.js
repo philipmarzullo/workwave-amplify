@@ -155,6 +155,12 @@ Select sessions will be available on demand after the event, but in-person atten
 CONFERENCE APP:
 Download the conference app (available December 2026) to view all sessions, build a personalized schedule, and view hotel floor maps. Expert consultations can be booked via the app the week before the event.
 
+WEBSITE FEATURES:
+- Live Poll on the homepage: "Benchmark Yourself" section where you vote on your #1 goal for AMPLIFY 2027 and see how your priorities compare to 1,000+ fellow attendees. Full live leaderboard launches at the conference.
+- Build My Agenda quiz: Take a quick quiz about your role, product, and interests to get personalized session recommendations. Available at /my-agenda.
+- Share via Email: After getting your personalized agenda, share it with your boss or colleagues via email to help justify attendance.
+- Browse & Filter Sessions: All 100+ sessions are browsable and filterable by track, type, and day at /sessions.
+
 CONFERENCE PARTNERS:
 Platinum: Applause, Captivated, Coast, Coalmarch, Lawn Pro, Voice for Pest
 Gold: Azuga, Cinch, Corteva, SameDay
