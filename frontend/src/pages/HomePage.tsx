@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { Calendar, Users, BarChart3, Zap, Brain, Plug, Shield, Lightbulb, MapPin, ArrowRight, Mic, TrendingUp, Info } from 'lucide-react'
 import ScrollFadeIn from '../components/ScrollFadeIn'
 import SessionCard from '../components/SessionCard'
+import LivePoll from '../components/LivePoll'
 import { sessions } from '../data/sessions'
 import { useState, useEffect } from 'react'
 
@@ -219,6 +220,21 @@ export default function HomePage() {
               </ScrollFadeIn>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Live Poll */}
+      <section className="bg-gray-50 py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollFadeIn>
+            <h2 className="text-3xl sm:text-4xl font-bold text-navy text-center mb-4 font-display">Quick Poll</h2>
+            <p className="text-gray-500 text-center max-w-2xl mx-auto mb-12">
+              What are fellow attendees most looking forward to? Cast your vote.
+            </p>
+          </ScrollFadeIn>
+          <ScrollFadeIn delay={100}>
+            <LivePoll />
+          </ScrollFadeIn>
         </div>
       </section>
 

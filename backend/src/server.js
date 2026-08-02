@@ -23,6 +23,10 @@ app.get('/health', (_req, res) => {
 const chatRouter = require('./routes/chat');
 app.use('/api/chat', chatRouter);
 
+// Poll route
+const pollRouter = require('./routes/poll');
+app.use('/api/poll', pollRouter);
+
 // 404
 app.use((_req, res) => {
   res.status(404).json({ error: 'Not found' });

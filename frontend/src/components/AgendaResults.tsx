@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
-import { RotateCcw, Download, ExternalLink, FileText } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { RotateCcw, Download, ExternalLink, FileText, Mail, ArrowRight } from 'lucide-react'
 import type { PersonaSelection, Session, Day } from '../types'
 import { sessions, dayLabels } from '../data/sessions'
 import { getTrack } from '../data/tracks'
@@ -210,6 +211,32 @@ function downloadPdf(grouped: Map<Day, { session: Session; score: number }[]>) {
   setTimeout(() => win.print(), 300)
 }
 
+function generateMailto(grouped: Map<Day, { session: Session; score: number }[]>): string {
+  const subject = encodeURIComponent('My WorkWave AMPLIFY 2027 Agenda')
+
+  const lines: string[] = [
+    'Here are the sessions I plan to attend at WorkWave AMPLIFY 2027:',
+    '',
+  ]
+
+  for (const [day, items] of grouped.entries()) {
+    lines.push(`--- ${dayLabels[day]} ---`)
+    for (const { session } of items) {
+      const track = getTrack(session.track)
+      lines.push(`• ${session.title}`)
+      lines.push(`  ${session.time} | ${track.label} Track | ${session.speaker}`)
+      lines.push('')
+    }
+  }
+
+  lines.push('---')
+  lines.push('Register: https://workwaveconference.cventevents.com/9AWddk')
+  lines.push('Build your own agenda: https://amplify.workwave.com/my-agenda')
+
+  const body = encodeURIComponent(lines.join('\n'))
+  return `mailto:?subject=${subject}&body=${body}`
+}
+
 export default function AgendaResults({ persona, onReset }: Props) {
   const recommended = useMemo(() => {
     const scored = sessions.map(s => ({
@@ -260,6 +287,12 @@ export default function AgendaResults({ persona, onReset }: Props) {
           >
             <FileText className="w-4 h-4" /> Download PDF
           </button>
+          <a
+            href={generateMailto(grouped)}
+            className="inline-flex items-center gap-2 text-sm bg-accent text-white hover:opacity-90 font-medium px-4 py-2 rounded-lg transition-opacity"
+          >
+            <Mail className="w-4 h-4" /> Share via Email
+          </a>
           <button
             onClick={onReset}
             className="inline-flex items-center gap-2 text-sm text-accent hover:text-accent-dark font-medium transition-colors"
@@ -267,7 +300,13 @@ export default function AgendaResults({ persona, onReset }: Props) {
             <RotateCcw className="w-4 h-4" /> Retake Quiz
           </button>
         </div>
-        <p className="text-xs text-gray-400">Google Calendar users: use the link on each session below, or import the .ics file.</p>
+        <p className="text-xs text-gray-400 mb-3">Google Calendar users: use the link on each session below, or import the .ics file.</p>
+        <Link
+          to="/sessions"
+          className="inline-flex items-center gap-1 text-sm text-accent hover:text-accent-dark font-medium transition-colors"
+        >
+          Browse all sessions <ArrowRight className="w-3.5 h-3.5" />
+        </Link>
       </div>
 
       {Array.from(grouped.entries()).map(([day, items]) => (
