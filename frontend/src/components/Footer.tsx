@@ -33,7 +33,7 @@ export default function Footer() {
               <h4 className="font-semibold text-sm mb-3">Conference</h4>
               <ul className="space-y-2 text-sm text-gray-400">
                 <li><Link to="/sessions" className="hover:text-white transition-colors">Sessions</Link></li>
-                <li><Link to="/my-agenda" className="hover:text-white transition-colors">Build My Agenda</Link></li>
+                <li><Link to="/my-agenda" className="hover:text-white transition-colors">My Agenda</Link></li>
                 <li><Link to="/partners" className="hover:text-white transition-colors">Partners</Link></li>
                 <li><Link to="/travel" className="hover:text-white transition-colors">Travel & Hotel</Link></li>
                 <li><Link to="/#poll" className="hover:text-white transition-colors">Take The Poll</Link></li>

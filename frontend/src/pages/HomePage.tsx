@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Calendar, Users, BarChart3, Zap, Brain, Plug, Shield, Lightbulb, MapPin, ArrowRight, Mic, TrendingUp, Info } from 'lucide-react'
+import { Calendar, Users, BarChart3, Zap, Brain, Plug, Shield, Lightbulb, MapPin, ArrowRight, Mic, TrendingUp, Info, HelpCircle } from 'lucide-react'
 import ScrollFadeIn from '../components/ScrollFadeIn'
 import SessionCard from '../components/SessionCard'
 import LivePoll from '../components/LivePoll'
@@ -372,9 +372,9 @@ export default function HomePage() {
           <ScrollFadeIn>
             <h2 className="text-3xl sm:text-4xl font-bold text-navy text-center mb-10 font-display">Explore More</h2>
           </ScrollFadeIn>
-          <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
             <ScrollFadeIn delay={0}>
-              <Link to="/partners" className="block bg-gray-50 rounded-xl p-6 border border-gray-200 hover:shadow-md hover:border-accent/30 transition-all group">
+              <Link to="/partners" className="block bg-gray-50 rounded-xl p-6 border border-gray-200 hover:shadow-md hover:border-accent/30 transition-all group h-full">
                 <div className="w-11 h-11 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
                   <Users className="w-5 h-5 text-accent" />
                 </div>
@@ -386,7 +386,7 @@ export default function HomePage() {
               </Link>
             </ScrollFadeIn>
             <ScrollFadeIn delay={100}>
-              <Link to="/travel" className="block bg-gray-50 rounded-xl p-6 border border-gray-200 hover:shadow-md hover:border-accent/30 transition-all group">
+              <Link to="/travel" className="block bg-gray-50 rounded-xl p-6 border border-gray-200 hover:shadow-md hover:border-accent/30 transition-all group h-full">
                 <div className="w-11 h-11 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
                   <MapPin className="w-5 h-5 text-accent" />
                 </div>
@@ -394,6 +394,18 @@ export default function HomePage() {
                 <p className="text-sm text-gray-500 mb-3">Hotel booking at $289/night, airport info, local transport, and weather tips for your trip to New Orleans.</p>
                 <span className="text-accent font-medium text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
                   View Travel Info <ArrowRight className="w-4 h-4" />
+                </span>
+              </Link>
+            </ScrollFadeIn>
+            <ScrollFadeIn delay={200}>
+              <Link to="/faq" className="block bg-gray-50 rounded-xl p-6 border border-gray-200 hover:shadow-md hover:border-accent/30 transition-all group h-full">
+                <div className="w-11 h-11 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
+                  <HelpCircle className="w-5 h-5 text-accent" />
+                </div>
+                <h3 className="font-bold text-navy mb-2">FAQ</h3>
+                <p className="text-sm text-gray-500 mb-3">Registration, refunds, hotel booking, dress code, dietary needs, Mardi Gras tips, and everything else you need to know.</p>
+                <span className="text-accent font-medium text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                  View FAQ <ArrowRight className="w-4 h-4" />
                 </span>
               </Link>
             </ScrollFadeIn>
