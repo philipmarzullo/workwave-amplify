@@ -188,7 +188,7 @@ export default function ChatWidget() {
           className={`amp-launcher bg-accent hover:bg-accent-dark text-white flex items-center justify-center ${shouldAnimate ? 'amp-launcher-attention' : ''}`}
           aria-label="Open chat"
         >
-          <BotIcon className="w-7 h-7" />
+          <BotIcon className="w-7 h-7" faceColor="#8B3DFF" />
         </button>
       )}
 
