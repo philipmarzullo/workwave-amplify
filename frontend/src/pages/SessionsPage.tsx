@@ -81,6 +81,10 @@ export default function SessionsPage() {
           onDayChange={setDayFilter}
         />
 
+        <p className="text-sm text-gray-400 mb-6">
+          Showing {filtered.length} of {sessions.length} sessions
+        </p>
+
         {filtered.length === 0 ? (
           <div className="text-center py-16">
             <p className="text-gray-400 text-lg">No sessions match your filters.</p>
