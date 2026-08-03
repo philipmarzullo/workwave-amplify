@@ -559,7 +559,7 @@ export default function HomePage() {
               Ready to AMPLIFY?
             </h2>
             <p className="text-gray-300 text-lg mb-8 max-w-xl mx-auto">
-              Join 1,000+ field service professionals at the Hilton New Orleans Riverside. Laissez les bons temps rouler.
+              Join 1,000+ field service professionals at the Hilton New Orleans Riverside. January 31 - February 3, 2027.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
