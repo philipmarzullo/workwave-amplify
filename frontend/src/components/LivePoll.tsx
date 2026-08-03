@@ -26,7 +26,16 @@ export default function LivePoll() {
   useEffect(() => {
     fetch(API_URL)
       .then(r => r.json())
-      .then(data => setPoll(data))
+      .then(data => {
+        setPoll(data)
+        // If localStorage says we voted but server has no votes,
+        // the server was restarted and lost data — let the user vote again
+        if (hasVoted && data.total === 0) {
+          localStorage.removeItem(STORAGE_KEY)
+          setHasVoted(false)
+          setVotedIndex(-1)
+        }
+      })
       .catch(() => {})
   }, [])
 
