@@ -5,47 +5,23 @@ const API_URL = import.meta.env.PROD
   ? 'https://workwave-amplify-backend.onrender.com/api/poll'
   : 'http://localhost:10000/api/poll'
 
-const STORAGE_KEY = 'amplify-poll-voted'
-
 interface PollData {
   question: string
   options: string[]
   votes: number[]
   total: number
+  voted: boolean
+  votedIndex: number
 }
 
 export default function LivePoll() {
   const [poll, setPoll] = useState<PollData | null>(null)
-  const [hasVoted, setHasVoted] = useState(() => localStorage.getItem(STORAGE_KEY) !== null)
-  const [votedIndex, setVotedIndex] = useState<number>(() => {
-    const stored = localStorage.getItem(STORAGE_KEY)
-    return stored !== null ? parseInt(stored, 10) : -1
-  })
   const [animating, setAnimating] = useState(false)
 
   useEffect(() => {
     fetch(API_URL)
       .then(r => r.json())
-      .then(data => {
-        setPoll(data)
-        if (hasVoted && votedIndex >= 0) {
-          // Re-verify our vote with the server — if the server restarted
-          // and lost our vote, this re-records it. If it already has it,
-          // the 409 response still returns current counts.
-          fetch(API_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ optionIndex: votedIndex }),
-          })
-            .then(r => r.json())
-            .then(verified => {
-              if (verified.votes && verified.total != null) {
-                setPoll(prev => prev ? { ...prev, votes: verified.votes, total: verified.total } : prev)
-              }
-            })
-            .catch(() => {})
-        }
-      })
+      .then(data => setPoll(data))
       .catch(() => {})
   }, [])
 
@@ -57,10 +33,13 @@ export default function LivePoll() {
         body: JSON.stringify({ optionIndex: index }),
       })
       const data = await res.json()
-      setPoll(prev => prev ? { ...prev, votes: data.votes, total: data.total } : prev)
-      setVotedIndex(index)
-      setHasVoted(true)
-      localStorage.setItem(STORAGE_KEY, String(index))
+      setPoll(prev => prev ? {
+        ...prev,
+        votes: data.votes,
+        total: data.total,
+        voted: true,
+        votedIndex: data.votedIndex ?? index,
+      } : prev)
       setAnimating(true)
       setTimeout(() => setAnimating(false), 700)
     } catch {
@@ -81,7 +60,7 @@ export default function LivePoll() {
         <h3 className="text-xl font-bold text-navy">{poll.question}</h3>
       </div>
 
-      {!hasVoted ? (
+      {!poll.voted ? (
         <div className="space-y-3">
           {poll.options.map((option, i) => (
             <button
@@ -101,7 +80,7 @@ export default function LivePoll() {
           {poll.options.map((option, i) => {
             const pct = poll.total > 0 ? Math.round((poll.votes[i] / poll.total) * 100) : 0
             const barWidth = poll.total > 0 ? (poll.votes[i] / maxVotes) * 100 : 0
-            const isSelected = votedIndex === i
+            const isSelected = poll.votedIndex === i
             return (
               <div key={i} className="relative">
                 <div
@@ -128,9 +107,9 @@ export default function LivePoll() {
               </div>
             )
           })}
-          {votedIndex >= 0 && poll.total > 0 && (
+          {poll.votedIndex >= 0 && poll.total > 0 && (
             <p className="text-sm text-accent font-medium text-center mt-3">
-              You and {Math.round((poll.votes[votedIndex] / poll.total) * 100)}% of attendees agree.
+              You and {Math.round((poll.votes[poll.votedIndex] / poll.total) * 100)}% of attendees agree.
             </p>
           )}
           <p className="text-xs text-gray-400 text-center">{poll.total} vote{poll.total !== 1 ? 's' : ''}</p>
