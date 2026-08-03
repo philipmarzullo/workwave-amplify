@@ -28,12 +28,22 @@ export default function LivePoll() {
       .then(r => r.json())
       .then(data => {
         setPoll(data)
-        // If localStorage says we voted but server has no votes,
-        // the server was restarted and lost data — let the user vote again
-        if (hasVoted && data.total === 0) {
-          localStorage.removeItem(STORAGE_KEY)
-          setHasVoted(false)
-          setVotedIndex(-1)
+        if (hasVoted && votedIndex >= 0) {
+          // Re-verify our vote with the server — if the server restarted
+          // and lost our vote, this re-records it. If it already has it,
+          // the 409 response still returns current counts.
+          fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ optionIndex: votedIndex }),
+          })
+            .then(r => r.json())
+            .then(verified => {
+              if (verified.votes && verified.total != null) {
+                setPoll(prev => prev ? { ...prev, votes: verified.votes, total: verified.total } : prev)
+              }
+            })
+            .catch(() => {})
         }
       })
       .catch(() => {})
