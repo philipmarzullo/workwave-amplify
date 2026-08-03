@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
 import ScrollFadeIn from '../components/ScrollFadeIn'
-import BotIcon from '../components/BotIcon'
 
 interface FaqItem {
   question: string
@@ -191,13 +190,13 @@ export default function FaqPage() {
             onClick={openChat}
             className="w-full text-left bg-accent/5 border border-accent/20 rounded-xl p-5 mb-10 flex items-start gap-4 hover:bg-accent/10 hover:border-accent/30 transition-colors cursor-pointer"
           >
-            <div className="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
-              <BotIcon className="w-6 h-6 text-accent" />
+            <div className="w-10 h-10 flex items-center justify-center shrink-0 mt-0.5">
+              <img src="/logos/waive-mark-gradient.svg" alt="WAIve" className="w-8 h-8" />
             </div>
             <div>
-              <p className="font-semibold text-navy text-sm mb-1">Got a question not listed here? Ask our AI assistant.</p>
+              <p className="font-semibold text-navy text-sm mb-1">Got a question not listed here? Ask WAIve.</p>
               <p className="text-sm text-gray-500">
-                It knows everything about AMPLIFY 2027, from sessions and tracks to travel tips and registration. Click here to start chatting.
+                WAIve knows everything about AMPLIFY 2027, from sessions and tracks to travel tips and registration. Click here to start chatting.
               </p>
             </div>
           </button>
@@ -229,16 +228,16 @@ export default function FaqPage() {
         {/* Bottom chat nudge */}
         <ScrollFadeIn>
           <div className="text-center mt-12 p-8 bg-navy rounded-xl">
-            <BotIcon className="w-10 h-10 text-accent mx-auto mb-3" />
+            <img src="/logos/waive-mark-white.svg" alt="WAIve" className="w-10 h-10 mx-auto mb-3" />
             <h3 className="text-white font-bold text-lg mb-2">Still have questions?</h3>
             <p className="text-gray-300 text-sm mb-4 max-w-md mx-auto">
-              Our conference assistant is available 24/7. Ask about sessions, registration, travel, or anything else.
+              WAIve is available 24/7. Ask about sessions, registration, travel, or anything else.
             </p>
             <button
               onClick={openChat}
               className="bg-accent hover:bg-accent-dark text-white font-semibold px-6 py-3 rounded-lg transition-colors mb-3"
             >
-              Chat with our assistant
+              Ask WAIve
             </button>
             <p className="text-gray-500 text-xs">
               Or email <a href="mailto:events@workwave.com" className="text-accent hover:underline">events@workwave.com</a>

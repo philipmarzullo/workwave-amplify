@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { X, Send, ArrowRight } from 'lucide-react'
 import type { ChatMessage } from '../types'
-import BotIcon from './BotIcon'
 
 const API_URL = import.meta.env.PROD
   ? 'https://workwave-amplify-backend.onrender.com/api/chat'
@@ -186,9 +185,9 @@ export default function ChatWidget() {
         <button
           onClick={() => setIsOpen(true)}
           className={`amp-launcher bg-accent hover:bg-accent-dark text-white flex items-center justify-center ${shouldAnimate ? 'amp-launcher-attention' : ''}`}
-          aria-label="Open chat"
+          aria-label="Ask WAIve"
         >
-          <BotIcon className="w-7 h-7" faceColor="#8B3DFF" />
+          <img src="/logos/waive-mark-white.svg" alt="Ask WAIve" className="w-7 h-7" />
         </button>
       )}
 
@@ -200,11 +199,11 @@ export default function ChatWidget() {
           >
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center shrink-0">
-                <BotIcon className="w-5 h-5 text-magenta" />
+                <img src="/logos/waive-mark-white.svg" alt="WAIve" className="w-5 h-5" />
               </div>
               <div>
-                <div className="text-white text-sm font-semibold leading-tight">AMPLIFY Assistant</div>
-                <div className="text-gray-400 text-xs leading-tight">Ask about sessions, tracks, or the conference</div>
+                <div className="text-white text-sm font-semibold leading-tight">Ask WAIve</div>
+                <div className="text-gray-400 text-xs leading-tight">Your AI-powered conference assistant</div>
               </div>
             </div>
             <button
@@ -225,12 +224,12 @@ export default function ChatWidget() {
             <div style={{ padding: '16px' }}>
               {messages.length === 0 && (
                 <div className="text-center py-4">
-                  <div className="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <BotIcon className="w-6 h-6 text-accent" />
+                  <div className="w-12 h-12 flex items-center justify-center mx-auto mb-3">
+                    <img src="/logos/waive-mark-gradient.svg" alt="WAIve" className="w-12 h-12" />
                   </div>
-                  <p className="text-sm text-gray-600 font-medium mb-1">Your AMPLIFY concierge, powered by AI</p>
+                  <p className="text-sm text-gray-600 font-medium mb-1">Ask WAIve anything about AMPLIFY</p>
                   <p className="text-xs text-gray-400 leading-relaxed mb-4">
-                    I know every session, speaker, and detail about the conference. Ask me anything.
+                    Sessions, speakers, travel, registration, New Orleans tips. I've got you covered.
                   </p>
                   <div className="flex flex-wrap justify-center gap-2">
                     {[

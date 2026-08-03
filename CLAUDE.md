@@ -54,8 +54,10 @@ workwave-amplify/
 - `POST /api/chat` — Claude proxy with rate limiting (5/min, 50/day per IP, 500/day global)
 - ANTHROPIC_API_KEY env var required
 
-## Chat Agent
+## Chat Agent (Ask WAIve)
 
+- Branded as "Ask WAIve" — WorkWave's AI assistant
+- WAIve mark icon (sparkle) used across chat FAB, header, welcome, FAQ, and home CTA
 - 60-word hard limit per response
 - `[REGISTER_NOW]` tag renders as CTA button
 - Coy about the easter egg
