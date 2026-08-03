@@ -17,26 +17,27 @@ const POLL = {
 const DATA_DIR = path.join(__dirname, '..', '..', 'data');
 const POLL_FILE = path.join(DATA_DIR, 'poll.json');
 
+// Seed data so the poll doesn't look empty on first deploy
+const SEED_VOTES = [134, 89, 107, 62];
+
 function loadPollData() {
   try {
     const raw = fs.readFileSync(POLL_FILE, 'utf-8');
     const data = JSON.parse(raw);
-    // Support both old format (votedIPs as array) and new format (votedMap as object)
     let votedMap = new Map();
     if (data.votedMap && typeof data.votedMap === 'object') {
       votedMap = new Map(Object.entries(data.votedMap).map(([k, v]) => [k, Number(v)]));
     } else if (Array.isArray(data.votedIPs)) {
-      // Migrate old format — can't recover which option, so just mark as -1
       for (const ip of data.votedIPs) {
         votedMap.set(ip, -1);
       }
     }
     return {
-      votes: data.votes || [0, 0, 0, 0],
+      votes: data.votes || [...SEED_VOTES],
       votedMap,
     };
   } catch {
-    return { votes: [0, 0, 0, 0], votedMap: new Map() };
+    return { votes: [...SEED_VOTES], votedMap: new Map() };
   }
 }
 
