@@ -1,11 +1,13 @@
 import { useState, useRef, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import { X, Send, ArrowRight } from 'lucide-react'
+import { X, ArrowUp, ArrowRight } from 'lucide-react'
 import type { ChatMessage } from '../types'
 
 const API_URL = import.meta.env.PROD
   ? 'https://workwave-amplify-backend.onrender.com/api/chat'
   : 'http://localhost:10000/api/chat'
+
+const WAIVE_PURPLE = '#6310D1'
 
 export default function ChatWidget() {
   const location = useLocation()
@@ -160,9 +162,9 @@ export default function ChatWidget() {
           z-index: 9999;
           bottom: 20px;
           right: 20px;
-          width: 60px;
-          height: 60px;
-          border-radius: 50%;
+          width: 56px;
+          height: 56px;
+          border-radius: 14px;
           box-shadow: 0 4px 12px rgba(0,0,0,0.15);
           transition: transform 200ms ease, box-shadow 200ms ease;
         }
@@ -175,16 +177,17 @@ export default function ChatWidget() {
         }
         @keyframes amp-attention {
           0%, 100% { transform: scale(1); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-          15% { transform: scale(1.15) rotate(-5deg); box-shadow: 0 6px 24px rgba(139,61,255,0.4); }
-          30% { transform: scale(1.1) rotate(3deg); box-shadow: 0 6px 24px rgba(139,61,255,0.3); }
-          45% { transform: scale(1.05) rotate(0deg); box-shadow: 0 4px 16px rgba(139,61,255,0.2); }
+          15% { transform: scale(1.15) rotate(-5deg); box-shadow: 0 6px 24px rgba(99,16,209,0.4); }
+          30% { transform: scale(1.1) rotate(3deg); box-shadow: 0 6px 24px rgba(99,16,209,0.3); }
+          45% { transform: scale(1.05) rotate(0deg); box-shadow: 0 4px 16px rgba(99,16,209,0.2); }
         }
       `}</style>
 
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className={`amp-launcher bg-accent hover:bg-accent-dark text-white flex items-center justify-center ${shouldAnimate ? 'amp-launcher-attention' : ''}`}
+          className={`amp-launcher text-white flex items-center justify-center ${shouldAnimate ? 'amp-launcher-attention' : ''}`}
+          style={{ backgroundColor: WAIVE_PURPLE }}
           aria-label="Ask WAIve"
         >
           <img src="/logos/waive-mark-white.svg" alt="Ask WAIve" className="w-7 h-7" />
@@ -193,22 +196,23 @@ export default function ChatWidget() {
 
       {isOpen && (
         <div className="amp-chat-panel flex flex-col overflow-hidden bg-white border border-gray-200">
+          {/* Header - white bg matching official WAIve widget */}
           <div
-            className="bg-navy shrink-0 flex items-center justify-between"
+            className="bg-white shrink-0 flex items-center justify-between border-b border-gray-200"
             style={{ minHeight: '56px', padding: '0 12px 0 16px' }}
           >
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center shrink-0">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
+                style={{ backgroundColor: WAIVE_PURPLE }}
+              >
                 <img src="/logos/waive-mark-white.svg" alt="WAIve" className="w-5 h-5" />
               </div>
-              <div>
-                <div className="text-white text-sm font-semibold leading-tight">Ask WAIve</div>
-                <div className="text-gray-400 text-xs leading-tight">Your AI-powered conference assistant</div>
-              </div>
+              <span className="text-gray-900 text-base font-bold">WAIve<sup className="text-[10px] ml-0.5">®</sup></span>
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="text-gray-400 hover:text-white transition-colors flex items-center justify-center"
+              className="text-gray-400 hover:text-gray-600 transition-colors flex items-center justify-center"
               style={{ width: '44px', height: '44px' }}
               aria-label="Close chat"
             >
@@ -223,15 +227,17 @@ export default function ChatWidget() {
           >
             <div style={{ padding: '16px' }}>
               {messages.length === 0 && (
-                <div className="text-center py-4">
-                  <div className="w-12 h-12 flex items-center justify-center mx-auto mb-3">
-                    <img src="/logos/waive-mark-gradient.svg" alt="WAIve" className="w-12 h-12" />
+                <div className="text-center py-8">
+                  <div className="flex items-center justify-center mx-auto mb-5">
+                    <img src="/logos/waive-mark-gradient.svg" alt="WAIve" className="w-16 h-16" />
                   </div>
-                  <p className="text-sm text-gray-600 font-medium mb-1">Ask WAIve anything about AMPLIFY</p>
-                  <p className="text-xs text-gray-400 leading-relaxed mb-4">
-                    Sessions, speakers, travel, registration, New Orleans tips. I've got you covered.
+                  <p className="text-base text-gray-900 font-bold mb-1">Ask WAIve anything about</p>
+                  <p className="text-base text-gray-900 font-bold mb-2">AMPLIFY</p>
+                  <p className="text-sm text-gray-400 leading-relaxed mb-6">
+                    Sessions, speakers, travel, registration, New Orleans tips.<br />
+                    I've got you covered.
                   </p>
-                  <div className="flex flex-wrap justify-center gap-2">
+                  <div className="flex flex-col gap-2">
                     {[
                       'What sessions should I attend?',
                       'Tell me about New Orleans',
@@ -241,7 +247,7 @@ export default function ChatWidget() {
                       <button
                         key={prompt}
                         onClick={() => sendMessage(prompt)}
-                        className="text-xs border border-accent/30 text-accent rounded-full px-3 py-1.5 hover:bg-accent/5 transition-colors cursor-pointer"
+                        className="w-full text-left text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-xl px-4 py-3 transition-colors cursor-pointer"
                       >
                         {prompt}
                       </button>
@@ -260,7 +266,7 @@ export default function ChatWidget() {
                       <div
                         className={`whitespace-pre-wrap ${
                           msg.role === 'user'
-                            ? 'bg-accent text-white'
+                            ? 'text-white'
                             : 'bg-gray-100 text-gray-800'
                         }`}
                         style={{
@@ -269,6 +275,7 @@ export default function ChatWidget() {
                           borderRadius: msg.role === 'user' ? '16px 16px 4px 16px' : '16px 16px 16px 4px',
                           fontSize: '14px',
                           lineHeight: '1.45',
+                          ...(msg.role === 'user' ? { backgroundColor: WAIVE_PURPLE } : {}),
                         }}
                       >
                         {textContent}
@@ -328,11 +335,11 @@ export default function ChatWidget() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask about AMPLIFY..."
-                  className="flex-1 border border-gray-200 bg-gray-50 focus:bg-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
+                  className="flex-1 border border-gray-300 bg-white focus:outline-none focus:border-gray-400 transition-colors"
                   style={{
                     fontSize: '16px',
-                    height: '40px',
-                    borderRadius: '20px',
+                    height: '44px',
+                    borderRadius: '12px',
                     paddingLeft: '16px',
                     paddingRight: '16px',
                   }}
@@ -341,11 +348,16 @@ export default function ChatWidget() {
                 <button
                   type="submit"
                   disabled={!input.trim() || isLoading}
-                  className="bg-accent hover:bg-accent-dark disabled:bg-gray-200 text-white disabled:text-gray-400 rounded-full flex items-center justify-center transition-colors shrink-0"
-                  style={{ width: '44px', height: '44px' }}
+                  className="text-white disabled:text-gray-400 flex items-center justify-center transition-colors shrink-0"
+                  style={{
+                    width: '44px',
+                    height: '44px',
+                    borderRadius: '12px',
+                    backgroundColor: !input.trim() || isLoading ? '#e5e7eb' : WAIVE_PURPLE,
+                  }}
                   aria-label="Send message"
                 >
-                  <Send className="w-4 h-4" />
+                  <ArrowUp className="w-5 h-5" />
                 </button>
               </form>
             </div>
