@@ -1,9 +1,10 @@
 import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
-import { RotateCcw, Download, ExternalLink, FileText, Mail, ArrowRight } from 'lucide-react'
-import type { PersonaSelection, Session, Day } from '../types'
+import { RotateCcw, Download, ExternalLink, FileText, Mail, ArrowRight, Sparkles, Star } from 'lucide-react'
+import type { PersonaSelection, Session, Day, Interest } from '../types'
 import { sessions, dayLabels } from '../data/sessions'
 import { getTrack } from '../data/tracks'
+import { roles, products, interests as interestData } from '../data/personas'
 
 interface Props {
   persona: PersonaSelection
@@ -237,6 +238,66 @@ function generateMailto(grouped: Map<Day, { session: Session; score: number }[]>
   return `mailto:?subject=${subject}&body=${body}`
 }
 
+function getInterestLabel(id: Interest): string {
+  return interestData.find(i => i.id === id)?.label || id
+}
+
+function generateSummary(persona: PersonaSelection, recommended: { session: Session; score: number }[]): {
+  intro: string
+  highlights: string[]
+  extras: { title: string; description: string }[]
+} {
+  const roleLabel = roles.find(r => r.id === persona.role)?.label || 'attendee'
+  const productLabel = products.find(p => p.id === persona.product)?.label || 'your platform'
+
+  const trackCount = recommended.filter(r => r.session.track === persona.product).length
+  const jointCount = recommended.filter(r => r.session.track === 'joint').length
+  const customerLedCount = recommended.filter(r => r.session.customerLed).length
+  const topInterests = persona.interests.slice(0, 3).map(getInterestLabel)
+
+  const intro = `As a ${roleLabel.toLowerCase()} on ${productLabel}, your agenda focuses on ${topInterests.join(', ').replace(/, ([^,]*)$/, ', and $1')}. We found ${recommended.length} sessions across ${Array.from(new Set(recommended.map(r => r.session.day))).length} days tailored to your priorities.`
+
+  const highlights: string[] = []
+  if (trackCount > 0) highlights.push(`${trackCount} ${productLabel}-specific session${trackCount > 1 ? 's' : ''} matched your interests`)
+  if (jointCount > 0) highlights.push(`${jointCount} cross-platform session${jointCount > 1 ? 's' : ''} on topics like AI, analytics, and industry trends`)
+  if (customerLedCount > 0) highlights.push(`${customerLedCount} customer-led session${customerLedCount > 1 ? 's' : ''} from real operators sharing proven strategies`)
+
+  const extras: { title: string; description: string }[] = []
+
+  // Suggest bootcamp if they didn't get one in recommendations
+  const hasBootcamp = recommended.some(r => r.session.bootCamp)
+  if (!hasBootcamp) {
+    extras.push({
+      title: `${productLabel} Bootcamp`,
+      description: `Hands-on workshop on Sunday with product experts using your own company data. Included with your ticket but requires pre-registration.`,
+    })
+  }
+
+  // Always suggest Meet the Experts
+  extras.push({
+    title: 'Meet the Product Experts',
+    description: '30-minute one-on-one sessions for reporting, configuration help, feature demos, and API questions. Book via the conference app the week before.',
+  })
+
+  // Suggest Wavelytics if not in their interests
+  if (!persona.interests.includes('wavelytics')) {
+    extras.push({
+      title: 'Wavelytics Sessions',
+      description: "WorkWave's new business analytics platform is a major focus this year. Worth checking out even if analytics isn't your primary interest.",
+    })
+  }
+
+  // Suggest AI sessions if not in their interests
+  if (!persona.interests.includes('ai')) {
+    extras.push({
+      title: 'AI & WAIve Sessions',
+      description: "WAIve, WorkWave's AI platform, launches new capabilities at AMPLIFY. These sessions are relevant to every role.",
+    })
+  }
+
+  return { intro, highlights, extras }
+}
+
 export default function AgendaResults({ persona, onReset }: Props) {
   const recommended = useMemo(() => {
     const scored = sessions.map(s => ({
@@ -267,12 +328,53 @@ export default function AgendaResults({ persona, onReset }: Props) {
 
   const allRecommendedSessions = useMemo(() => recommended.map(r => r.session), [recommended])
 
+  const summary = useMemo(() => generateSummary(persona, recommended), [persona, recommended])
+
   return (
     <div className="max-w-3xl mx-auto">
+      {/* AI Summary */}
+      <div className="bg-gradient-to-br from-accent/5 to-magenta/5 border border-accent/20 rounded-2xl p-6 mb-8">
+        <div className="flex items-start gap-3 mb-4">
+          <div className="w-9 h-9 bg-accent/10 rounded-lg flex items-center justify-center shrink-0 mt-0.5">
+            <Sparkles className="w-5 h-5 text-accent" />
+          </div>
+          <div>
+            <h3 className="font-bold text-navy text-base mb-1">Your Agenda at a Glance</h3>
+            <p className="text-sm text-gray-600 leading-relaxed">{summary.intro}</p>
+          </div>
+        </div>
+        {summary.highlights.length > 0 && (
+          <ul className="space-y-1.5 mb-5 ml-12">
+            {summary.highlights.map((h, i) => (
+              <li key={i} className="text-sm text-gray-600 flex items-start gap-2">
+                <span className="text-accent mt-0.5">&#8226;</span>
+                {h}
+              </li>
+            ))}
+          </ul>
+        )}
+        {summary.extras.length > 0 && (
+          <div className="ml-12">
+            <div className="flex items-center gap-2 mb-3">
+              <Star className="w-4 h-4 text-magenta" />
+              <h4 className="font-semibold text-navy text-sm">Don't miss these extras</h4>
+            </div>
+            <div className="grid gap-2">
+              {summary.extras.map((extra) => (
+                <div key={extra.title} className="bg-white/60 rounded-lg px-4 py-3 border border-gray-200/60">
+                  <p className="font-medium text-navy text-sm">{extra.title}</p>
+                  <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">{extra.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
       <div className="text-center mb-8">
-        <h2 className="text-2xl font-bold text-navy mb-2">Your Personalized Agenda</h2>
+        <h2 className="text-2xl font-bold text-navy mb-2">Your Recommended Sessions</h2>
         <p className="text-gray-500 mb-4">
-          Based on your role, product, and interests, here are your top recommended sessions.
+          {recommended.length} sessions matched your profile, sorted by relevance.
         </p>
         <div className="flex items-center justify-center gap-3 flex-wrap mb-4">
           <button

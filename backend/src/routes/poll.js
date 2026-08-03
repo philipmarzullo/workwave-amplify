@@ -1,4 +1,6 @@
 const express = require('express');
+const fs = require('fs');
+const path = require('path');
 const router = express.Router();
 
 const POLL = {
@@ -11,9 +13,41 @@ const POLL = {
   ],
 };
 
-// In-memory vote counts and IP tracking
-const votes = [0, 0, 0, 0];
-const votedIPs = new Set();
+// Persistent storage
+const DATA_DIR = path.join(__dirname, '..', '..', 'data');
+const POLL_FILE = path.join(DATA_DIR, 'poll.json');
+
+function loadPollData() {
+  try {
+    const raw = fs.readFileSync(POLL_FILE, 'utf-8');
+    const data = JSON.parse(raw);
+    return {
+      votes: data.votes || [0, 0, 0, 0],
+      votedIPs: new Set(data.votedIPs || []),
+    };
+  } catch {
+    return { votes: [0, 0, 0, 0], votedIPs: new Set() };
+  }
+}
+
+function savePollData(votes, votedIPs) {
+  try {
+    if (!fs.existsSync(DATA_DIR)) {
+      fs.mkdirSync(DATA_DIR, { recursive: true });
+    }
+    fs.writeFileSync(POLL_FILE, JSON.stringify({
+      votes,
+      votedIPs: [...votedIPs],
+    }));
+  } catch (err) {
+    console.error('Failed to save poll data:', err.message);
+  }
+}
+
+// Load persisted data on startup
+const pollData = loadPollData();
+const votes = pollData.votes;
+const votedIPs = pollData.votedIPs;
 
 // GET /api/poll — return poll data with current counts
 router.get('/', (_req, res) => {
@@ -44,6 +78,7 @@ router.post('/', (req, res) => {
 
   votedIPs.add(ip);
   votes[optionIndex]++;
+  savePollData(votes, votedIPs);
 
   res.json({
     votes: [...votes],

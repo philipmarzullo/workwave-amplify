@@ -9,6 +9,14 @@ const API_URL = import.meta.env.PROD
 
 const WAIVE_PURPLE = '#6310D1'
 
+const NUDGE_MESSAGES = [
+  'Need help picking sessions? I know all 100+.',
+  "Curious what's new this year? Ask me.",
+  'I can help you build your perfect agenda.',
+  'First time at AMPLIFY? I have tips.',
+  'Ask me about New Orleans travel tips.',
+]
+
 export default function ChatWidget() {
   const location = useLocation()
   const shouldAnimate = location.pathname === '/faq' || location.pathname === '/'
@@ -16,6 +24,7 @@ export default function ChatWidget() {
   const [messages, setMessages] = useState<ChatMessage[]>([])
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [nudgeText, setNudgeText] = useState<string | null>(null)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const scrollRef = useRef<HTMLDivElement>(null)
@@ -25,6 +34,21 @@ export default function ChatWidget() {
     window.addEventListener('open-chat', handler)
     return () => window.removeEventListener('open-chat', handler)
   }, [])
+
+  // Idle nudge: show a bubble after 25s if chat hasn't been opened this session
+  useEffect(() => {
+    if (sessionStorage.getItem('amplify-nudge-shown')) return
+    const timer = setTimeout(() => {
+      if (!isOpen) {
+        const msg = NUDGE_MESSAGES[Math.floor(Math.random() * NUDGE_MESSAGES.length)]
+        setNudgeText(msg)
+        sessionStorage.setItem('amplify-nudge-shown', '1')
+        // Auto-dismiss after 8s
+        setTimeout(() => setNudgeText(null), 8000)
+      }
+    }, 25000)
+    return () => clearTimeout(timer)
+  }, [isOpen])
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -181,11 +205,48 @@ export default function ChatWidget() {
           30% { transform: scale(1.1) rotate(3deg); box-shadow: 0 6px 24px rgba(99,16,209,0.3); }
           45% { transform: scale(1.05) rotate(0deg); box-shadow: 0 4px 16px rgba(99,16,209,0.2); }
         }
+        .amp-nudge {
+          position: fixed;
+          z-index: 9998;
+          bottom: 84px;
+          right: 20px;
+          max-width: 220px;
+          background: white;
+          border-radius: 12px 12px 4px 12px;
+          box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+          padding: 10px 14px;
+          font-size: 13px;
+          color: #374151;
+          line-height: 1.4;
+          animation: amp-nudgeIn 300ms ease-out forwards;
+          cursor: pointer;
+        }
+        .amp-nudge::after {
+          content: '';
+          position: absolute;
+          bottom: -6px;
+          right: 16px;
+          width: 12px;
+          height: 12px;
+          background: white;
+          transform: rotate(45deg);
+          box-shadow: 2px 2px 4px rgba(0,0,0,0.06);
+        }
+        @keyframes amp-nudgeIn {
+          from { opacity: 0; transform: translateY(8px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
       `}</style>
+
+      {!isOpen && nudgeText && (
+        <div className="amp-nudge" onClick={() => { setNudgeText(null); setIsOpen(true) }}>
+          {nudgeText}
+        </div>
+      )}
 
       {!isOpen && (
         <button
-          onClick={() => setIsOpen(true)}
+          onClick={() => { setNudgeText(null); setIsOpen(true) }}
           className={`amp-launcher text-white flex items-center justify-center ${shouldAnimate ? 'amp-launcher-attention' : ''}`}
           style={{ backgroundColor: WAIVE_PURPLE }}
           aria-label="Ask WAIve"

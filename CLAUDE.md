@@ -11,7 +11,7 @@ A pre-conference experience app for WorkWave Amplify (Jan 31 - Feb 3, 2027, New 
 | Frontend | React 18 + Vite + TypeScript + Tailwind CSS 3 |
 | Backend | Node.js/Express (Claude API proxy + rate limiting) |
 | AI | Claude Haiku 4.5 via `/api/chat` |
-| Data | Static TypeScript seed data (no DB) |
+| Data | Static TypeScript seed data + JSON file persistence for poll/logs |
 
 ## Project Structure
 
@@ -51,7 +51,8 @@ workwave-amplify/
 
 - Port: 10000 (Render default)
 - `GET /health` — Health check
-- `POST /api/chat` — Claude proxy with rate limiting (5/min, 50/day per IP, 500/day global)
+- `POST /api/chat` — Claude proxy with rate limiting (5/min, 50/day per IP, 500/day global), logs interactions to `backend/data/chat-logs.jsonl`
+- `GET /api/poll` / `POST /api/poll` — Live poll with persistent JSON storage in `backend/data/poll.json`
 - ANTHROPIC_API_KEY env var required
 
 ## Chat Agent (Ask WAIve)
@@ -62,6 +63,14 @@ workwave-amplify/
 - `[REGISTER_NOW]` tag renders as CTA button
 - Coy about the easter egg
 - Knows all conference sessions and tracks
+- Idle nudge popup after 25s on site (once per session) to drive engagement
+- All interactions logged to `backend/data/chat-logs.jsonl` for marketing insights (IP hashed)
+
+## Agenda Results
+
+- AI-style summary above session list: describes what was matched, highlights track/interest breakdown
+- "Don't miss these extras" section suggests bootcamps, Meet the Experts, Wavelytics, and AI sessions the user didn't select
+- Top 10 scored sessions grouped by day with export options (ICS, PDF, email, Google Cal)
 
 ## Easter Egg
 

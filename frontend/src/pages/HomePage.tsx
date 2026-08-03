@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Calendar, Users, BarChart3, Zap, Brain, Plug, Shield, Lightbulb, MapPin, ArrowRight, Mic, TrendingUp, Info, HelpCircle } from 'lucide-react'
+import { Calendar, Users, BarChart3, Zap, Brain, Plug, Shield, Lightbulb, MapPin, ArrowRight, Mic, TrendingUp, Info, HelpCircle, CheckCircle2 } from 'lucide-react'
 import ScrollFadeIn from '../components/ScrollFadeIn'
 import SessionCard from '../components/SessionCard'
 import LivePoll from '../components/LivePoll'
@@ -362,6 +362,56 @@ export default function HomePage() {
               </ScrollFadeIn>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* First Timer */}
+      <section className="bg-gray-50 py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollFadeIn>
+            <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+              <div className="bg-gradient-to-r from-accent to-magenta p-6 sm:p-8">
+                <h2 className="text-2xl sm:text-3xl font-bold text-white font-display mb-2">First Time at AMPLIFY?</h2>
+                <p className="text-white/80">Here's what to expect and how to make the most of it.</p>
+              </div>
+              <div className="p-6 sm:p-8">
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {[
+                    { text: 'Take the Build My Agenda quiz to get personalized session picks', link: '/my-agenda' },
+                    { text: 'Book the Hilton at $289/night before the block fills up', link: '/travel' },
+                    { text: 'Sign up for a Product Bootcamp on Sunday (free with your ticket)' },
+                    { text: 'Download the conference app in December to build your schedule' },
+                    { text: 'Plan for Mardi Gras traffic and book flights early', link: '/travel' },
+                    { text: 'Pack business casual, layers, and comfortable shoes' },
+                  ].map((item) => (
+                    <div key={item.text} className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-0.5" />
+                      <p className="text-sm text-gray-600 leading-relaxed">
+                        {item.link ? (
+                          <Link to={item.link} className="text-accent hover:underline">{item.text}</Link>
+                        ) : (
+                          item.text
+                        )}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-6 pt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center gap-4">
+                  <button
+                    onClick={() => window.dispatchEvent(new CustomEvent('open-chat'))}
+                    className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:text-accent-dark transition-colors cursor-pointer"
+                  >
+                    <img src="/logos/waive-mark-gradient.svg" alt="" className="w-5 h-5" />
+                    Ask WAIve for first-timer tips
+                  </button>
+                  <span className="text-gray-300 hidden sm:inline">|</span>
+                  <a href="mailto:events@workwave.com" className="text-sm text-gray-500 hover:text-gray-700 transition-colors">
+                    Questions? Email events@workwave.com
+                  </a>
+                </div>
+              </div>
+            </div>
+          </ScrollFadeIn>
         </div>
       </section>
 

@@ -1,5 +1,29 @@
 const express = require('express');
+const fs = require('fs');
+const path = require('path');
+const crypto = require('crypto');
 const router = express.Router();
+
+// Chat interaction logging
+const DATA_DIR = path.join(__dirname, '..', '..', 'data');
+const CHAT_LOG_FILE = path.join(DATA_DIR, 'chat-logs.jsonl');
+
+function logChatInteraction(ipHash, userMessage, assistantResponse) {
+  try {
+    if (!fs.existsSync(DATA_DIR)) {
+      fs.mkdirSync(DATA_DIR, { recursive: true });
+    }
+    const entry = JSON.stringify({
+      timestamp: new Date().toISOString(),
+      ipHash,
+      userMessage,
+      assistantResponse,
+    });
+    fs.appendFileSync(CHAT_LOG_FILE, entry + '\n');
+  } catch (err) {
+    console.error('Failed to log chat interaction:', err.message);
+  }
+}
 
 // =============================================================
 // Cost protection: multiple layers to prevent API abuse
@@ -298,6 +322,7 @@ router.post('/', async (req, res) => {
     const reader = response.body.getReader();
     const decoder = new TextDecoder();
     let buffer = '';
+    let fullResponse = '';
 
     while (true) {
       const { done, value } = await reader.read();
@@ -315,10 +340,18 @@ router.post('/', async (req, res) => {
         try {
           const event = JSON.parse(data);
           if (event.type === 'content_block_delta' && event.delta?.text) {
+            fullResponse += event.delta.text;
             res.write(`data: ${JSON.stringify({ text: event.delta.text })}\n\n`);
           }
         } catch {}
       }
+    }
+
+    // Log the interaction for marketing insights
+    const lastUserMsg = messages[messages.length - 1];
+    if (lastUserMsg && lastUserMsg.role === 'user') {
+      const ipHash = crypto.createHash('sha256').update(clientIp).digest('hex').slice(0, 12);
+      logChatInteraction(ipHash, lastUserMsg.content, fullResponse);
     }
 
     res.write('data: [DONE]\n\n');
