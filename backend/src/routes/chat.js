@@ -182,13 +182,14 @@ Select sessions will be available on demand after the event, but in-person atten
 CONFERENCE APP:
 Download the conference app (available December 2026) to view all sessions, build a personalized schedule, and view hotel floor maps. Expert consultations can be booked via the app the week before the event.
 
-WEBSITE FEATURES:
-- Live Poll on the homepage: "Benchmark Yourself" section where you vote on your #1 goal for AMPLIFY 2027 and see how your priorities compare to 1,000+ fellow attendees. Full live leaderboard launches at the conference.
-- Build My Agenda quiz: Take a quick quiz about your role, product, and interests to get personalized session recommendations. Available at /my-agenda.
+WEBSITE PAGES (always refer to pages by their title, never by their URL path):
+- Home: Live Poll "Benchmark Yourself" section where you vote on your #1 goal for AMPLIFY 2027 and see how your priorities compare to 1,000+ fellow attendees. Full live leaderboard launches at the conference.
+- My Agenda: Build My Agenda quiz. Take a quick quiz about your role, product, and interests to get personalized session recommendations.
 - Share via Email: After getting your personalized agenda, share it with your boss or colleagues via email to help justify attendance.
-- Browse & Filter Sessions: All 100+ sessions are browsable and filterable by track, type, and day at /sessions.
-- Partners page at /partners: Lists current Platinum partners (Applause, Captivated, Coast, Coalmarch, Lawn Pro, Voice for Pest) and Gold partners (Azuga, Cinch, Corteva, SameDay). Explains why companies should partner: targeted audience of 1,000+ service professionals, three days of networking, and brand visibility. Partnership inquiries go to Jerry Hsu at jerry.hsu@workwave.com.
-- Travel & Hotel page at /travel: Full travel guide with hotel booking walkthrough, airport info, local transport, weather, and Mardi Gras tips. Hotel booking is a 3-step process: (1) register for the conference, (2) receive a Passkey booking link via email, (3) book through Passkey at the exclusive $289/night rate. The page links directly to the Hilton New Orleans Riverside website and the conference registration page. Covers both airports (MSY, 25-30 min drive, and Lakefront/NEW, 10 min for private flights), local transport (Uber/Lyft, St. Charles streetcar, walking), and nearby attractions (French Quarter, Bourbon Street, Garden District). If someone asks about travel, hotel, or getting to the conference, point them to /travel.
+- Sessions: All 100+ sessions are browsable and filterable by track, type, and day.
+- Partners: Lists current Platinum partners (Applause, Captivated, Coast, Coalmarch, Lawn Pro, Voice for Pest) and Gold partners (Azuga, Cinch, Corteva, SameDay). Explains why companies should partner: targeted audience of 1,000+ service professionals, three days of networking, and brand visibility. Partnership inquiries go to Jerry Hsu at jerry.hsu@workwave.com.
+- Travel & Hotel: Full travel guide with hotel booking walkthrough, airport info, local transport, weather, and Mardi Gras tips. Hotel booking is a 3-step process: (1) register for the conference, (2) receive a Passkey booking link via email, (3) book through Passkey at the exclusive $289/night rate. The page links directly to the Hilton New Orleans Riverside website and the conference registration page. Covers both airports (MSY, 25-30 min drive, and Lakefront/NEW, 10 min for private flights), local transport (Uber/Lyft, St. Charles streetcar, walking), and nearby attractions (French Quarter, Bourbon Street, Garden District). If someone asks about travel, hotel, or getting to the conference, point them to the Travel & Hotel page.
+- FAQ: Frequently asked questions about the conference.
 
 CONFERENCE PARTNERS:
 Platinum: Applause, Captivated, Coast, Coalmarch, Lawn Pro, Voice for Pest
