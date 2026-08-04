@@ -377,22 +377,16 @@ export default function HomePage() {
               <div className="p-6 sm:p-8">
                 <div className="grid sm:grid-cols-2 gap-4">
                   {[
-                    { text: 'Take the Build My Agenda quiz to get personalized session picks', link: '/my-agenda' },
-                    { text: 'Book the Hilton at $289/night before the block fills up', link: '/travel' },
-                    { text: 'Sign up for a Product Bootcamp on Sunday (free with your ticket)' },
-                    { text: 'Download the conference app in December to build your schedule' },
-                    { text: 'Plan for Mardi Gras traffic and book flights early', link: '/travel' },
-                    { text: 'Pack business casual, layers, and comfortable shoes' },
-                  ].map((item) => (
-                    <div key={item.text} className="flex items-start gap-3">
+                    'Take the Build My Agenda quiz to get personalized session picks',
+                    'Book the Hilton at $289/night before the block fills up',
+                    'Sign up for a Product Bootcamp on Sunday (free with your ticket)',
+                    'Download the conference app in December to build your schedule',
+                    'Plan for Mardi Gras traffic and book flights early',
+                    'Pack business casual, layers, and comfortable shoes',
+                  ].map((text) => (
+                    <div key={text} className="flex items-start gap-3">
                       <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                      <p className="text-sm text-gray-600 leading-relaxed">
-                        {item.link ? (
-                          <Link to={item.link} className="text-accent hover:underline">{item.text}</Link>
-                        ) : (
-                          item.text
-                        )}
-                      </p>
+                      <p className="text-sm text-gray-600 leading-relaxed">{text}</p>
                     </div>
                   ))}
                 </div>
