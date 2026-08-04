@@ -306,6 +306,12 @@ function generateSummary(persona: PersonaSelection, recommended: { session: Sess
     })
   }
 
+  // Always show early bird pricing callout
+  extras.push({
+    title: 'Early Bird Pricing — Through August 31',
+    description: 'Lock in $849 (save $100+). Group discounts available for 5+ tickets. Lowest price of the year.',
+  })
+
   return { intro, highlights, extras }
 }
 
