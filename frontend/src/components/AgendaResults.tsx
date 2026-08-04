@@ -269,10 +269,10 @@ function generateSummary(persona: PersonaSelection, recommended: { session: Sess
   const hasBootcamp = recommended.some(r => r.session.bootCamp)
   if (!hasBootcamp) {
     const bootcampDesc = role === 'owner'
-      ? `Perfect for your newer team members, or admins who need a refresher on basic software setup and workflows. Bootcamps are included in the ticket price, but do require pre-registration, so make sure to sign up during registration.`
+      ? `Great for your team members who need a refresher on software setup and workflows. Included in ticket price, pre-registration required.`
       : role === 'admin'
-      ? `Perfect for new users or those just needing a refresh. Bring your laptop and learn hands-on with our product experts. Bootcamps are included in the ticket price, but do require pre-registration, so make sure to sign up during registration.`
-      : `Great opportunity to get hands-on with ${productLabel} alongside product experts. Bring your laptop and work with your own company data. Bootcamps are included in the ticket price but require pre-registration.`
+      ? `Hands-on time with product experts, perfect for new users or anyone needing a refresh. Bring your laptop. Included in ticket price, pre-registration required.`
+      : `Get hands-on with ${productLabel} alongside product experts using your own company data. Included in ticket price, pre-registration required.`
     extras.push({
       title: `Explore Sunday Bootcamps`,
       description: bootcampDesc,
@@ -281,10 +281,10 @@ function generateSummary(persona: PersonaSelection, recommended: { session: Sess
 
   // Always suggest Meet the Experts — role-specific copy
   const expertsDesc = role === 'owner'
-    ? `Meet one-on-one with product experts and staff for personalized attention and consultation. These 30-minute sessions can cover any topic you want but are commonly used for reporting how-to's, feature demos, configuration help, and technical questions such as APIs. Appointments go live in the mobile app the week before the event. You may also visit our Product Experts room onsite to book an appointment with our team.`
+    ? `30-minute one-on-ones for reporting, feature demos, configuration help, and API questions. Book via the conference app the week before or onsite.`
     : role === 'admin'
-    ? `Meet one-on-one with product experts and staff for personalized attention and consultation. These 30-minute sessions can cover any topic you want but are commonly used for reporting how-to's, feature demos, configuration help, and technical questions such as APIs. Appointments go live in the mobile app the week before the event. You may also visit our Product Experts room onsite to book an appointment with our team.`
-    : `Book a 30-minute one-on-one with a product expert to dig into the features that matter most for your day-to-day. Great for field-specific questions, mobile app tips, and workflow optimization. Appointments go live in the mobile app the week before the event.`
+    ? `30-minute one-on-ones covering reporting, feature demos, configuration, and technical questions. Book via the conference app the week before or onsite.`
+    : `30-minute one-on-ones for field-specific questions, mobile app tips, and workflow help. Book via the conference app the week before or onsite.`
   extras.push({
     title: 'Meet the Product Experts',
     description: expertsDesc,
