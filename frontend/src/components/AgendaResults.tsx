@@ -258,9 +258,9 @@ function generateSummary(persona: PersonaSelection, recommended: { session: Sess
   const intro = `As a ${roleLabel.toLowerCase()} on ${productLabel}, your agenda focuses on ${topInterests.join(', ').replace(/, ([^,]*)$/, ', and $1')}. We found ${recommended.length} sessions across ${Array.from(new Set(recommended.map(r => r.session.day))).length} days tailored to your priorities.`
 
   const highlights: string[] = []
-  if (trackCount > 0) highlights.push(`${trackCount} ${productLabel}-specific session${trackCount > 1 ? 's' : ''} matched your interests`)
-  if (jointCount > 0) highlights.push(`${jointCount} cross-platform session${jointCount > 1 ? 's' : ''} on topics like AI, analytics, and industry trends`)
-  if (customerLedCount > 0) highlights.push(`${customerLedCount} customer-led session${customerLedCount > 1 ? 's' : ''} from real operators sharing proven strategies`)
+  if (trackCount > 0) highlights.push(`${productLabel}-specific sessions matched your interests`)
+  if (jointCount > 0) highlights.push(`Joint sessions on topics like AI, analytics, and industry trends`)
+  if (customerLedCount > 0) highlights.push(`Customer-led sessions from real operators sharing proven strategies`)
 
   const extras: { title: string; description: string }[] = []
   const role = persona.role
